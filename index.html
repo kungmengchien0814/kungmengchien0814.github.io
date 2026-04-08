@@ -8,11 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* 2. 顏色與變數定義：仿 Liench 的清爽綠色調 */
         :root {
             --primary-green: #2d6a4f;    /* 森林深綠 */
             --accent-green: #52b788;     /* 柔和嫩綠 */
-            --bg-gray: #f4f7f6;          /* 仿 Liench 的淺灰背景 */
+            --bg-gray: #f4f7f6;          /* 仿 Liench 的質感淺灰 */
             --card-white: #ffffff;
             --text-dark: #2d3436;
             --text-muted: #636e72;
@@ -33,12 +32,12 @@
             line-height: 1.8;
         }
 
-        /* 3. 頂部導覽列 (Navbar) */
+        /* 頂部導覽列 */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid #eef2f3;
@@ -74,7 +73,7 @@
             color: var(--primary-green);
         }
 
-        /* 4. Hero Section (首頁大視覺) */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -95,20 +94,20 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin: 0;
             color: var(--primary-green);
             letter-spacing: 2px;
         }
 
         .hero-desc {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-muted);
             margin-top: 15px;
             max-width: 600px;
         }
 
-        /* 5. 卡片佈局 (仿 Liench Card) */
+        /* 卡片排版 */
         .main-content {
             max-width: 900px;
             margin: -80px auto 100px;
@@ -121,7 +120,7 @@
             padding: 50px;
             margin-bottom: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.01);
             opacity: 0;
             transform: translateY(40px);
             transition: var(--transition);
@@ -133,16 +132,16 @@
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary-green);
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
-        /* 6. 標籤與細節設計 */
+        /* 標籤雲與細項 */
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -152,39 +151,34 @@
         .tag {
             background: #f0fdf4;
             color: #2d6a4f;
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 600;
             border: 1px solid #dcfce7;
-            transition: var(--transition);
-        }
-
-        .tag:hover {
-            background: var(--primary-green);
-            color: white;
-            transform: scale(1.05);
         }
 
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
         }
 
-        .info-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .experience-item strong {
+            display: block;
             color: var(--text-dark);
+            font-size: 1.05rem;
         }
 
-        .info-item p {
-            margin: 0;
+        .experience-item span {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        /* 7. 頁尾 */
         footer {
             text-align: center;
             padding-bottom: 60px;
@@ -192,11 +186,10 @@
             font-size: 0.85rem;
         }
 
-        /* 響應式調整 */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 2.5rem; }
             .info-grid { grid-template-columns: 1fr; }
-            .card { padding: 30px; }
+            .card { padding: 35px 25px; }
             .main-content { margin-top: 20px; }
         }
     </style>
@@ -207,7 +200,7 @@
         <div class="nav-container">
             <a href="#" class="nav-logo">KUNG MENG-CHIEN</a>
             <div class="nav-links">
-                <a href="#about">關於</a>
+                <a href="#about">關於我</a>
                 <a href="#skills">特長</a>
                 <a href="#contact">聯絡</a>
             </div>
@@ -215,30 +208,40 @@
     </nav>
 
     <section class="hero">
-        <span class="hero-sub">HELLO, I AM</span>
+        <span class="hero-sub">RESUME PORTFOLIO</span>
         <h1>龔孟謙</h1>
-        <p class="hero-desc">智慧自動化工程系 | 科技與工程技術探索者</p>
+        <p class="hero-desc">智慧自動化工程系 | 探索科技與工程技術的無限可能</p>
     </section>
 
     <div class="main-content">
         <section id="about" class="card">
             <h2>👤 關於我</h2>
-            <p>我是龔孟謙，目前就讀於 **國立勤益科技大學 智慧自動化工程系** (四智三丙)。我對人工智慧、程式設計及自動化系統充滿熱情，致力於將複雜的理論知識轉化為具備實用價值的工程專案。</p>
-            <p>在校期間積極參與技術研發與專題探索，具備獨立解決問題的能力與強大的溝通協調精神。我認為科技不僅是工具，更是解決社會問題、提升效率的核心力量。</p>
+            <p>我是龔孟謙，目前就讀於 **國立勤益科技大學 智慧自動化工程系**。我對人工智慧、程式開發與自動化系統整合擁有極大的熱忱。我擅長將理論轉化為實作，並在解決複雜技術問題的過程中獲得成就感。</p>
+            <p>除了技術領域，我也積極投入社群與班級事務，透過擔任幹部磨練領導與溝通能力。我認為跨領域的結合與積極的服務態度，是身為工程師不可或缺的特質。</p>
         </section>
 
         <section class="card">
             <div class="info-grid">
                 <div class="info-item">
                     <h2>🎓 教育背景</h2>
-                    <h3>國立勤益科技大學</h3>
-                    <p>智慧自動化工程系 (112.09 - 在學中)</p>
-                    <p>學號：3B261084</p>
+                    <h3 style="margin:0; font-size:1.2rem;">國立勤益科技大學</h3>
+                    <p style="margin:5px 0;">智慧自動化工程系 (四智三丙)</p>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">學號：3B261084</p>
                 </div>
                 <div class="info-item">
-                    <h2>🏢 社團經驗</h2>
-                    <h3>滑板社 (幹部)</h3>
-                    <p>負責社團行政運作與推廣，培養了優秀的團隊合作與危機處理能力。</p>
+                    <h2>🏢 社團與幹部經驗</h2>
+                    <div class="experience-item">
+                        <strong>滑板社 幹部</strong>
+                        <span>負責社團行政運作、活動規劃與推廣。</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>班代</strong>
+                        <span>統籌班級事務、作為師生溝通橋樑，具備優秀協調力。</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>副班代</strong>
+                        <span>輔助班代執行班級行政任務，確保團隊運作流暢。</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -249,12 +252,12 @@
                 <span class="tag">人工智慧應用</span>
                 <span class="tag">程式開發 (Java/Python)</span>
                 <span class="tag">自動化系統整合</span>
+                <span class="tag">社群媒體運營</span>
                 <span class="tag">攝影與影像剪輯</span>
-                <span class="tag">社群媒體經營</span>
                 <span class="tag">邏輯思維</span>
                 <span class="tag">危機處理</span>
-                <span class="tag">滑板技術</span>
                 <span class="tag">吉他彈唱</span>
+                <span class="tag">滑板技術</span>
             </div>
         </section>
 
@@ -263,31 +266,30 @@
             <div class="tag-container">
                 <span class="tag">積極主動</span>
                 <span class="tag">注重細節</span>
-                <span class="tag">善解人意</span>
+                <span class="tag">團隊溝通與協作</span>
                 <span class="tag">活潑熱情</span>
-                <span class="tag">具溝通協調能力</span>
-                <span class="tag">強大執行力</span>
+                <span class="tag">高執行力</span>
+                <span class="tag">善解人意</span>
             </div>
         </section>
 
         <section id="contact" class="card" style="text-align: center;">
             <h2>✉️ 聯絡資訊</h2>
-            <p>如果你對我的專案感興趣，或有任何合作機會，歡迎聯繫！</p>
-            <div style="margin-top: 30px;">
-                <p style="font-size: 1.4rem; font-weight: 700; color: var(--primary-green); margin-bottom: 5px;">0907-783-181</p>
-                <p style="color: var(--text-muted);">kungmengchien0814@gmail.com</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">高雄市小港區高坪二十二路 46 號</p>
+            <p>期待與您的交流與合作！</p>
+            <div style="margin-top: 35px;">
+                <p style="font-size: 1.5rem; font-weight: 700; color: var(--primary-green); margin:0;">0907-783-181</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 5px;">gggordon100022@gmail.com</p>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 KUNG MENG-CHIEN. 全力打造個人品牌價值。</p>
+        <p>&copy; 2026 KUNG MENG-CHIEN. 致力於創造科技價值。</p>
     </footer>
 
     <script>
         const observerOptions = {
-            threshold: 0.15
+            threshold: 0.12
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -302,11 +304,11 @@
             observer.observe(card);
         });
 
-        // 確保首張卡片在載入時即顯示
-        window.addEventListener('load', () => {
+        // 載入時自動顯示第一張卡片
+        window.onload = () => {
             const firstCard = document.querySelector('.card');
             if (firstCard) firstCard.classList.add('is-visible');
-        });
+        };
     </script>
 </body>
 </html>
