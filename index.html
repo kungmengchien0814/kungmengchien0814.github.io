@@ -3,146 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>龔孟謙 | 個人網站</title>
+    <title>龔孟謙 | Kung Meng-Chien Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* 基礎樣式：仿 Liench 的淡灰色背景 */
-        body {
-            background-color: #f7f9fc;
-            color: #333d47;
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
+        :root {
+            --primary-green: #2d6a4f;
+            --soft-green: #52b788;
+            --bg-gray: #f8fafc;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .container {
-            max-width: 800px;
-            margin: 60px auto;
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-gray);
+            color: #334155;
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        /* 導覽列 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--soft-green);
+        }
+
+        /* 英雄區塊 (Hero Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #e9f5f0 0%, #f8fafc 100%);
             padding: 0 20px;
         }
 
-        /* 頂部標題 */
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        header h1 {
-            color: #1b4332;
-            font-size: 2.6rem;
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-green);
             margin: 0;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
         }
 
-        .subtitle {
-            color: #52b788;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            display: block;
+        .hero p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-top: 10px;
         }
 
-        /* Liench 風格卡片 */
+        /* 卡片區域 */
+        .content-section {
+            max-width: 900px;
+            margin: -60px auto 100px;
+            padding: 0 20px;
+        }
+
         .card {
-            background: #ffffff;
-            border-radius: 24px; /* 大圓角 */
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04); /* 極輕陰影 */
-            border: 1px solid #edf2f7;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            color: #2d6a4f;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            border-left: 5px solid var(--soft-green);
+            padding-left: 15px;
             margin-top: 0;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
+            margin-bottom: 30px;
         }
 
-        /* 標籤樣式 */
-        .tag-box {
+        /* 標籤雲 */
+        .tag-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 12px;
         }
 
         .tag {
             background: #f0fdf4;
             color: #166534;
-            padding: 6px 16px;
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             border: 1px solid #dcfce7;
+            transition: var(--transition);
+            cursor: default;
         }
 
-        /* 內容文字 */
-        p {
-            margin: 0 0 15px 0;
+        .tag:hover {
+            background: var(--soft-green);
+            color: white;
+            transform: scale(1.1);
         }
 
+        /* 網格佈局 (學歷與經歷) */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .grid-item h3 {
+            margin-top: 0;
+            color: #1e293b;
+        }
+
+        /* 頁尾 */
         footer {
             text-align: center;
-            margin-top: 60px;
-            color: #a0aec0;
-            font-size: 0.85rem;
+            padding: 50px 0;
+            color: #94a3b8;
+            font-size: 0.9rem;
         }
 
-        /* 手機適應 */
-        @media (max-width: 600px) {
-            .container { margin: 30px auto; }
-            .card { padding: 30px 20px; }
-            header h1 { font-size: 2rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 30px; }
+            .content-section { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <span class="subtitle">PORTFOLIO</span>
-            <h1>龔孟謙</h1>
-            <p style="color: #718096; margin-top: 10px;">國立勤益科技大學 · 智慧自動化系</p>
-        </header>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">KUNG MENG-CHIEN</a>
+            <div class="nav-links">
+                <a href="#about">關於</a>
+                <a href="#skills">特長</a>
+                <a href="#contact">聯絡</a>
+            </div>
+        </div>
+    </nav>
 
-        <div class="card">
+    <section class="hero">
+        <p class="subtitle" style="color: var(--soft-green); font-weight: bold; letter-spacing: 5px; margin-bottom: 0;">HI, I AM</p>
+        <h1>龔孟謙</h1>
+        <p>國立勤益科技大學 · 智慧自動化工系</p>
+        <div style="margin-top: 30px; font-size: 1.5rem; cursor: pointer;">↓</div>
+    </section>
+
+    <div class="content-section">
+        <div id="about" class="card">
             <h2>👤 關於我</h2>
-            <p>我目前就讀於智慧自動化系，專注於將人工智慧、程式設計與自動化系統結合，並應用於實際工程專題中。</p>
-            <p>在學習路上，我抱持積極主動的態度，具備獨立思考與解決問題的能力。未來致力於在科技與工程領域持續深耕，將所學轉化為實際社會價值。</p>
+            <p>我目前就讀於智慧自動化系，專注於將人工智慧、程式設計與自動化系統結合。在學習過程中，我培養了獨立思考與解決問題的能力，並致力於將理論知識轉化為具備實際應用價值的專案。</p>
+            <p>遇到挑戰時，我習慣主動尋找資源、請教他人並持續嘗試最佳解法。未來希望能在科技與工程領域深耕，為產業與社會發展貢獻所學。</p>
         </div>
 
-        <div class="card">
-            <h2>🛹 專業與特長</h2>
-            <div class="tag-box">
-                <span class="tag">程式開發</span>
+        <div class="card grid">
+            <div class="grid-item">
+                <h2>🎓 教育背景</h2>
+                <h3>國立勤益科技大學</h3>
+                <p>智慧自動化工程系 (112年9月 - 在學中)</p>
+                <p style="color: #64748b; font-size: 0.9rem;">學習領域：AI應用、自動化系統、程式開發</p>
+            </div>
+            <div class="grid-item">
+                <h2>🏢 社團經驗</h2>
+                <h3>滑板社 幹部</h3>
+                <p>負責社團行政、活動規劃與推廣，學習團隊合作與專案執行能力。</p>
+            </div>
+        </div>
+
+        <div id="skills" class="card">
+            <h2>🛹 個人特長與技能</h2>
+            <div class="tag-group">
                 <span class="tag">人工智慧應用</span>
-                <span class="tag">自動化系統</span>
-                <span class="tag">攝影與剪輯</span>
-                <span class="tag">社群營運</span>
-                <span class="tag">滑板社幹部</span>
+                <span class="tag">程式開發</span>
+                <span class="tag">自動化系統整合</span>
+                <span class="tag">攝影與影片剪輯</span>
+                <span class="tag">社群媒體經營</span>
+                <span class="tag">邏輯思維</span>
+                <span class="tag">危機處理</span>
                 <span class="tag">吉他彈唱</span>
+                <span class="tag">時尚穿搭</span>
             </div>
         </div>
 
         <div class="card">
             <h2>✨ 個人特質</h2>
-            <div class="tag-box">
+            <div class="tag-group">
                 <span class="tag">積極主動</span>
-                <span class="tag">邏輯思維</span>
-                <span class="tag">團隊合作</span>
-                <span class="tag">危機處理</span>
-                <span class="tag">細節控</span>
+                <span class="tag">注重細節</span>
+                <span class="tag">善解人意</span>
                 <span class="tag">活潑熱情</span>
+                <span class="tag">溝通能力強</span>
+                <span class="tag">團隊合作精神</span>
             </div>
         </div>
 
-        <footer>
-            &copy; 2026 KUNG MENG-CHIEN. Built with GitHub Pages.
-        </footer>
+        <div id="contact" class="card" style="text-align: center;">
+            <h2>✉️ 聯絡資訊</h2>
+            <p>歡迎透過以下方式與我聯繫，期待與您的交流！</p>
+            <p style="font-size: 1.2rem; font-weight: bold; color: var(--primary-green);">0907-783-181</p>
+            <p>kungmengchien0814@gmail.com</p>
+        </div>
     </div>
 
+    <footer>
+        <p>&copy; 2026 KUNG MENG-CHIEN. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 互動效果：捲動到指定位置時顯示卡片
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // 初始化顯示第一張卡片
+        window.onload = () => {
+            if(cards[0]) cards[0].classList.add('show');
+        };
+    </script>
 </body>
 </html>
