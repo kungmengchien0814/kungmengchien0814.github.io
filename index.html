@@ -73,7 +73,7 @@
             color: var(--primary-green);
         }
 
-        /* Hero Section */
+        /* Hero Section (大視覺區) */
         .hero {
             height: 100vh;
             display: flex;
@@ -83,6 +83,23 @@
             text-align: center;
             padding: 0 20px;
             background: radial-gradient(circle at top right, #e9f5f0, transparent);
+        }
+
+        /* 個人照片樣式 - 圓形、邊框、陰影 */
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* 變成圓形 */
+            object-fit: cover; /* 確保圖片不變形 */
+            border: 5px solid var(--card-white); /* 白色外框 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* 柔和陰影 */
+            margin-bottom: 25px; /* 與下方文字的距離 */
+            transition: var(--transition);
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05); /* 滑鼠移過時略為放大 */
+            box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15); /* 陰影變深並帶點綠色 */
         }
 
         .hero-sub {
@@ -191,6 +208,7 @@
             .info-grid { grid-template-columns: 1fr; }
             .card { padding: 35px 25px; }
             .main-content { margin-top: 20px; }
+            .profile-pic { width: 130px; height: 130px; } /* 手機版照片略小 */
         }
     </style>
 </head>
@@ -208,6 +226,8 @@
     </nav>
 
     <section class="hero">
+        <img src="profile.jpg" alt="龔孟謙 個人照" class="profile-pic">
+
         <span class="hero-sub">RESUME PORTFOLIO</span>
         <h1>龔孟謙</h1>
         <p class="hero-desc">智慧自動化工程系 | 探索科技與工程技術的無限可能</p>
@@ -250,10 +270,12 @@
             <h2>🛹 專業與特長</h2>
             <div class="tag-container">
                 <span class="tag">人工智慧應用</span>
-                <span class="tag">程式開發 (C++/Python)</span>
+                <span class="tag">程式開發 (Java/Python)</span>
                 <span class="tag">自動化系統整合</span>
-                <span class="tag">熱流最佳化</span>
+                <span class="tag">社群媒體運營</span>
                 <span class="tag">攝影與影像剪輯</span>
+                <span class="tag">邏輯思維</span>
+                <span class="tag">危機處理</span>
                 <span class="tag">吉他彈唱</span>
                 <span class="tag">滑板技術</span>
             </div>
@@ -263,9 +285,11 @@
             <h2>✨ 個人特質</h2>
             <div class="tag-container">
                 <span class="tag">積極主動</span>
+                <span class="tag">注重細節</span>
                 <span class="tag">團隊溝通與協作</span>
+                <span class="tag">活潑熱情</span>
                 <span class="tag">高執行力</span>
-                <span class="tag">危機處理能力</span>
+                <span class="tag">善解人意</span>
             </div>
         </section>
 
