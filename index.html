@@ -5,130 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>龔孟謙 | 個人網站</title>
     <style>
-        :root {
-            --bg-color: #ffffff;        /* 純白背景 */
-            --card-bg: #fdfdfd;          /* 極淺灰卡片背景 */
-            --border-color: #e1e4e8;     /* 柔和的邊框顏色 */
-            --text-main: #24292e;       /* 深灰文字 (比純黑柔和) */
-            --text-muted: #6a737d;      /* 淺灰文字 */
-            --accent-color: #8a63d2;     /* 柔和的粉紫色 (亮色版) */
-            --accent-hover: #a371f7;    /* 懸停時略微變亮 */
-            --accent-light: rgba(138, 99, 210, 0.08); /* 超淺紫色背景 */
-        }
-
-        * {
-            box-sizing: border-box;
+        /* 1. 設定顏色與基礎樣式 */
+        body {
+            background-color: #ffffff; /* 純白背景，最不傷眼 */
+            color: #333333;           /* 深灰色文字，比純黑柔和 */
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
-
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            max-width: 750px;
+            margin: 50px auto;
+            padding: 20px;
         }
 
-        /* Header 區域 */
+        /* 2. 標題區 */
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            color: var(--accent-color);
-            font-size: 2.8rem;
-            margin-bottom: 12px;
-            letter-spacing: -1px; /* 略微緊湊，更有設計感 */
+            color: #6f42c1; /* 柔和紫色 */
+            font-size: 2.5em;
+            margin-bottom: 5px;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.3rem;
+        .school {
+            color: #666;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* 3. 卡片區塊 */
+        .section-card {
+            background: #fafafa; /* 極淺灰卡片 */
+            border: 1px solid #eeeeee;
+            border-radius: 15px;
+            padding: 25px;
             margin-bottom: 25px;
-            font-weight: 300; /* 使用細體 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        header p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-main);
-            font-size: 1.1rem;
+        h2 {
+            color: #444;
+            border-bottom: 2px solid #6f42c1;
+            padding-bottom: 10px;
+            margin-top: 0;
         }
 
-        /* 卡片共用樣式 */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px; /* 更圓潤的卡片 */
-            padding: 35px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* 更輕微的陰影 */
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(138, 99, 210, 0.08); /* 懸停時加入紫色光暈 */
-        }
-
-        .card h2 {
-            color: var(--text-main);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 12px;
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-            font-weight: 600;
-        }
-
-        .card p {
-            color: var(--text-main);
-            font-size: 1.05rem;
-            margin-bottom: 15px;
-        }
-
-        .card p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* 標籤樣式 (特質與特長) */
-        .tags {
+        /* 4. 標籤雲 (特長與特質) */
+        .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .tag {
-            background: var(--accent-light); /* 超淺紫色背景 */
-            color: var(--accent-color);
-            border: 1px solid rgba(138, 99, 210, 0.2);
-            padding: 8px 16px;
-            border-radius: 25px; /* 更圓潤 */
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.2s;
+            background: #f0ebf8; /* 淺紫色背景 */
+            color: #6f42c1;      /* 紫色文字 */
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #d1c1e9;
         }
 
-        .tag:hover {
-            background: var(--accent-color);
-            color: #fff;
-            border-color: var(--accent-color);
-            cursor: default;
-        }
-
-        /* 響應式設計 */
+        /* 響應式：手機看也舒服 */
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .subtitle { font-size: 1.1rem; }
-            .card { padding: 25px; }
-            .container { padding: 30px 15px; }
+            .container { margin: 20px auto; }
+            h1 { font-size: 2em; }
         }
     </style>
 </head>
@@ -137,46 +85,44 @@
     <div class="container">
         <header>
             <h1>龔孟謙</h1>
-            <p class="subtitle">國立勤益科技大學 智慧自動化系</p>
-            <p>熱愛科技與工程技術，致力於將人工智慧與程式設計應用於實際生活。</p>
+            <p class="school">國立勤益科技大學 智慧自動化系</p>
+            <p>專注於人工智慧應用、自動化系統與程式開發</p>
         </header>
 
-        <section class="card">
+        <div class="section-card">
             <h2>👤 關於我</h2>
-            <p>在學習過程中，我對人工智慧、程式設計以及自動化系統的應用充滿興趣。透過課程與專案研究，我逐漸培養了解決問題與獨立思考的能力，並嘗試結合 AI 與工程技術，發展具有實際應用價值的系統。</p>
-            <p>遇到問題時，我會主動查資料、請教他人並持續嘗試不同方法解決。未來希望能在科技與工程領域持續深耕。</p>
-        </section>
+            <p>我是一名熱愛技術探索的大學生，擅長將理論知識應用於實際專題。在智慧自動化領域，我培養了獨立解決問題的能力，並對 AI 與程式設計充滿熱情。</p>
+            <p>遇到挑戰時，我習慣主動尋找資源並持續嘗試，致力於開發出具備實際應用價值的系統。</p>
+        </div>
 
-        <section class="card">
+        <div class="section-card">
             <h2>🛹 專業與特長</h2>
-            <div class="tags">
+            <div class="tag-container">
                 <span class="tag">程式開發</span>
-                <span class="tag">人工智慧應用</span>
+                <span class="tag">人工智慧</span>
                 <span class="tag">自動化系統</span>
-                <span class="tag">社群媒體運營</span>
-                <span class="tag">攝影</span>
+                <span class="tag">社群運營</span>
+                <span class="tag">攝影剪輯</span>
                 <span class="tag">滑板社幹部</span>
-                <span class="tag">吉他</span>
+                <span class="tag">吉他彈唱</span>
             </div>
-        </section>
+        </div>
 
-        <section class="card">
+        <div class="section-card">
             <h2>✨ 個人特質</h2>
-            <div class="tags">
+            <div class="tag-container">
                 <span class="tag">積極主動</span>
-                <span class="tag">注重細節</span>
                 <span class="tag">團隊合作</span>
-                <span class="tag">強大溝通能力</span>
                 <span class="tag">危機處理</span>
+                <span class="tag">細節掌控</span>
+                <span class="tag">溝通協調</span>
                 <span class="tag">活潑熱情</span>
             </div>
-        </section>
+        </div>
 
-        <section class="card" style="text-align: center; border: 2px dashed var(--border-color); background: rgba(0,0,0,0.01);">
-            <h2 style="border-bottom: none; color: var(--text-muted); margin-bottom: 15px;">🚀 專案作品集 (建置中)</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">期待未來分享更多自動化與 AI 相關專案。</p>
-        </section>
-
+        <footer style="text-align: center; color: #999; font-size: 0.8em; margin-top: 50px;">
+            &copy; 2026 龔孟謙 Kung Meng-Chien. All Rights Reserved.
+        </footer>
     </div>
 
 </body>
