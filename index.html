@@ -10,7 +10,7 @@
             --card-bg: #161b22;
             --text-main: #c9d1d9;
             --text-muted: #8b949e;
-            --accent-color: #a371f7; /* 科技紫 */
+            --accent-color: #a371f7;
             --accent-hover: #bc8cff;
         }
 
@@ -33,11 +33,9 @@
             padding: 40px 20px;
         }
 
-        /* Header 區域 */
         header {
             text-align: center;
             margin-bottom: 40px;
-            animation: fadeInDown 1s ease-out;
         }
 
         h1 {
@@ -52,7 +50,6 @@
             margin-bottom: 20px;
         }
 
-        /* 卡片共用樣式 */
         .card {
             background: var(--card-bg);
             border: 1px solid #30363d;
@@ -76,7 +73,6 @@
             font-size: 1.5rem;
         }
 
-        /* 標籤樣式 (特質與特長) */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -90,22 +86,8 @@
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.95rem;
-            transition: all 0.2s;
         }
 
-        .tag:hover {
-            background: var(--accent-color);
-            color: #fff;
-            cursor: default;
-        }
-
-        /* 動畫效果 */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 響應式設計 */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .card { padding: 20px; }
@@ -123,9 +105,9 @@
 
         <section class="card">
             <h2>👤 關於我</h2>
-            <p>在學習過程中，我對人工智慧、程式設計以及自動化系統的應用充滿興趣。透過課程與專題研究，我逐漸培養了解決問題與獨立思考的能力，並嘗試結合 AI 與工程技術，發展具有實際應用價值的系統。遇到問題時，我會主動查資料、請教他人並持續嘗試不同方法解決。</p>
+            <p>在學習過程中，我對人工智慧、程式設計以及自動化系統的應用充滿興趣。透過課程與專案研究，我逐漸培養了解決問題與獨立思考的能力，並嘗試結合 AI 與工程技術，發展具有實際應用價值的系統。</p>
             <br>
-            <p>未來，我希望能在科技與工程領域持續深耕，將所學應用在實際產業與社會發展之中。</p>
+            <p>遇到問題時，我會主動查資料、請教他人並持續嘗試不同方法解決。未來希望能在科技與工程領域持續深耕。</p>
         </section>
 
         <section class="card">
@@ -134,10 +116,9 @@
                 <span class="tag">程式開發</span>
                 <span class="tag">人工智慧應用</span>
                 <span class="tag">自動化系統</span>
-                <span class="tag">專案規劃</span>
-                <span class="tag">社群媒體營運</span>
+                <span class="tag">社群媒體運營</span>
                 <span class="tag">攝影</span>
-                <span class="tag">滑板 (社團幹部)</span>
+                <span class="tag">滑板社幹部</span>
                 <span class="tag">吉他</span>
             </div>
         </section>
@@ -146,21 +127,18 @@
             <h2>✨ 個人特質</h2>
             <div class="tags">
                 <span class="tag">積極主動</span>
-                <span class="tag">獨立自主</span>
                 <span class="tag">注重細節</span>
                 <span class="tag">團隊合作</span>
                 <span class="tag">強大溝通能力</span>
                 <span class="tag">危機處理</span>
-                <span class="tag">善解人意</span>
                 <span class="tag">活潑熱情</span>
             </div>
         </section>
 
         <section class="card" style="text-align: center; border-style: dashed;">
             <h2 style="border-bottom: none; color: var(--text-muted);">🚀 專案作品集 (建置中)</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">這裡未來可以放上你的 3D 建模作品、遊戲社群設計圖或是程式專題...</p>
+            <p style="color: var(--text-muted);">期待未來分享更多自動化與 AI 相關專案。</p>
         </section>
-
     </div>
 
 </body>
