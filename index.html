@@ -5,106 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>龔孟謙 | 個人網站</title>
     <style>
-        /* 1. 全局背景與字體：仿 liench 的淺灰色背景 */
+        /* 基礎樣式：仿 Liench 的淡灰色背景 */
         body {
-            background-color: #f5f7fa; 
-            color: #2d3436;           
-            font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
-            line-height: 1.7;
+            background-color: #f7f9fc;
+            color: #333d47;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
         }
 
-        /* 2. 頁面容器 */
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 60px auto;
             padding: 0 20px;
         }
 
-        /* 3. 標題區：簡約大氣 */
+        /* 頂部標題 */
         header {
             text-align: center;
             margin-bottom: 50px;
         }
 
-        h1 {
+        header h1 {
             color: #1b4332;
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 2.6rem;
+            margin: 0;
             letter-spacing: 2px;
         }
 
         .subtitle {
             color: #52b788;
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        /* 4. 卡片設計：這是仿 liench 風格的核心 */
+        /* Liench 風格卡片 */
         .card {
-            background: #ffffff; 
-            border-radius: 20px; /* 圓角大一點 */
+            background: #ffffff;
+            border-radius: 24px; /* 大圓角 */
             padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* 輕微柔和的陰影 */
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04); /* 極輕陰影 */
+            border: 1px solid #edf2f7;
         }
 
         h2 {
             color: #2d6a4f;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-top: 0;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
         }
 
-        /* 5. 標籤設計：清爽綠色 */
-        .tag-group {
+        /* 標籤樣式 */
+        .tag-box {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .tag {
-            background: #f0fff4; 
-            color: #2d6a4f;
-            padding: 8px 18px;
+            background: #f0fdf4;
+            color: #166534;
+            padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid #d7f5e1;
+            font-weight: 500;
+            border: 1px solid #dcfce7;
         }
 
-        /* 6. 內容文字 */
+        /* 內容文字 */
         p {
             margin: 0 0 15px 0;
-            color: #4a4a4a;
-            font-size: 1.05rem;
         }
 
-        /* 7. 聯絡區塊風格 (按鈕感) */
-        .footer-info {
+        footer {
             text-align: center;
             margin-top: 60px;
-            color: #999;
-            font-size: 0.9rem;
+            color: #a0aec0;
+            font-size: 0.85rem;
         }
 
-        /* 手機版調整 */
+        /* 手機適應 */
         @media (max-width: 600px) {
             .container { margin: 30px auto; }
-            h1 { font-size: 2rem; }
-            .card { padding: 25px; }
+            .card { padding: 30px 20px; }
+            header h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -112,46 +103,45 @@
 
     <div class="container">
         <header>
-            <p class="subtitle">PORTFOLIO</p>
+            <span class="subtitle">PORTFOLIO</span>
             <h1>龔孟謙</h1>
-            <p style="color: #747d8c;">國立勤益科技大學 智慧自動化系</p>
+            <p style="color: #718096; margin-top: 10px;">國立勤益科技大學 · 智慧自動化系</p>
         </header>
 
-        <section class="card">
+        <div class="card">
             <h2>👤 關於我</h2>
-            <p>我是一名對科技與工程充滿熱誠的大學生，目前就讀於智慧自動化系。在學習中，我致力於將人工智慧與自動化系統結合，發展出具有實際應用價值的解決方案。</p>
-            <p>我具備積極主動的學習態度，擅長在遇到困難時透過多方查閱資料來克服挑戰。未來期望能持續深耕技術領域，貢獻專業價值。</p>
-        </section>
+            <p>我目前就讀於智慧自動化系，專注於將人工智慧、程式設計與自動化系統結合，並應用於實際工程專題中。</p>
+            <p>在學習路上，我抱持積極主動的態度，具備獨立思考與解決問題的能力。未來致力於在科技與工程領域持續深耕，將所學轉化為實際社會價值。</p>
+        </div>
 
-        <section class="card">
+        <div class="card">
             <h2>🛹 專業與特長</h2>
-            <p>結合系上專業與個人興趣，我具備多元的跨領域技能：</p>
-            <div class="tag-group">
+            <div class="tag-box">
                 <span class="tag">程式開發</span>
                 <span class="tag">人工智慧應用</span>
                 <span class="tag">自動化系統</span>
                 <span class="tag">攝影與剪輯</span>
-                <span class="tag">社群媒體運營</span>
+                <span class="tag">社群營運</span>
                 <span class="tag">滑板社幹部</span>
                 <span class="tag">吉他彈唱</span>
             </div>
-        </section>
+        </div>
 
-        <section class="card">
+        <div class="card">
             <h2>✨ 個人特質</h2>
-            <div class="tag-group">
+            <div class="tag-box">
+                <span class="tag">積極主動</span>
                 <span class="tag">邏輯思維</span>
                 <span class="tag">團隊合作</span>
-                <span class="tag">危機處理能力</span>
-                <span class="tag">溝通協調能力</span>
+                <span class="tag">危機處理</span>
                 <span class="tag">細節控</span>
                 <span class="tag">活潑熱情</span>
             </div>
-        </section>
-
-        <div class="footer-info">
-            <p>&copy; 2026 KUNG MENG-CHIEN. Built with GitHub Pages.</p>
         </div>
+
+        <footer>
+            &copy; 2026 KUNG MENG-CHIEN. Built with GitHub Pages.
+        </footer>
     </div>
 
 </body>
