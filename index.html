@@ -9,9 +9,9 @@
     
     <style>
         :root {
-            --primary-green: #2d6a4f;    /* 森林深綠 */
-            --accent-green: #52b788;     /* 柔和嫩綠 */
-            --bg-gray: #f4f7f6;          /* 仿 Liench 的質感淺灰 */
+            --primary-green: #2d6a4f;
+            --accent-green: #52b788;
+            --bg-gray: #f4f7f6;
             --card-white: #ffffff;
             --text-dark: #2d3436;
             --text-muted: #636e72;
@@ -73,7 +73,7 @@
             color: var(--primary-green);
         }
 
-        /* Hero Section (大視覺區) */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -85,21 +85,20 @@
             background: radial-gradient(circle at top right, #e9f5f0, transparent);
         }
 
-        /* 個人照片樣式 - 圓形、邊框、陰影 */
         .profile-pic {
             width: 160px;
             height: 160px;
-            border-radius: 50%; /* 變成圓形 */
-            object-fit: cover; /* 確保圖片不變形 */
-            border: 5px solid var(--card-white); /* 白色外框 */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* 柔和陰影 */
-            margin-bottom: 25px; /* 與下方文字的距離 */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--card-white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
             transition: var(--transition);
         }
 
         .profile-pic:hover {
-            transform: scale(1.05); /* 滑鼠移過時略為放大 */
-            box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15); /* 陰影變深並帶點綠色 */
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15);
         }
 
         .hero-sub {
@@ -141,6 +140,8 @@
             opacity: 0;
             transform: translateY(40px);
             transition: var(--transition);
+            /* --- 修正跳轉位置的關鍵代碼 --- */
+            scroll-margin-top: 100px; 
         }
 
         .card.is-visible {
@@ -158,7 +159,6 @@
             gap: 12px;
         }
 
-        /* 標籤雲與細項 */
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -208,7 +208,7 @@
             .info-grid { grid-template-columns: 1fr; }
             .card { padding: 35px 25px; }
             .main-content { margin-top: 20px; }
-            .profile-pic { width: 130px; height: 130px; } /* 手機版照片略小 */
+            .profile-pic { width: 130px; height: 130px; }
         }
     </style>
 </head>
@@ -227,7 +227,6 @@
 
     <section class="hero">
         <img src="profile.jpg" alt="龔孟謙 個人照" class="profile-pic">
-
         <span class="hero-sub">RESUME PORTFOLIO</span>
         <h1>龔孟謙</h1>
         <p class="hero-desc">智慧自動化工程系 | 探索科技與工程技術的無限可能</p>
@@ -248,7 +247,7 @@
                     <p style="margin:5px 0;">智慧自動化工程系 (四智三丙)</p>
                     <p style="color:var(--text-muted); font-size:0.9rem;">學號：3B261084</p>
                 </div>
-                <div class="info-item">
+                <div id="experience" class="info-item">
                     <h2>🏢 社團與幹部經驗</h2>
                     <div class="experience-item">
                         <strong>滑板社 幹部</strong>
@@ -270,7 +269,7 @@
             <h2>🛹 專業與特長</h2>
             <div class="tag-container">
                 <span class="tag">人工智慧應用</span>
-                <span class="tag">程式開發 (C++/Python)</span>
+                <span class="tag">程式開發 (Java/Python)</span>
                 <span class="tag">自動化系統整合</span>
                 <span class="tag">熱流分析</span>
                 <span class="tag">攝影與影像剪輯</span>
@@ -304,10 +303,7 @@
     </footer>
 
     <script>
-        const observerOptions = {
-            threshold: 0.12
-        };
-
+        const observerOptions = { threshold: 0.12 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -320,7 +316,6 @@
             observer.observe(card);
         });
 
-        // 載入時自動顯示第一張卡片
         window.onload = () => {
             const firstCard = document.querySelector('.card');
             if (firstCard) firstCard.classList.add('is-visible');
