@@ -123,6 +123,38 @@
             max-width: 600px;
         }
 
+        /* Hero 區塊的按鈕樣式 */
+        .btn-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: #ffffff;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(82, 183, 136, 0.4);
+            color: #ffffff;
+        }
+
         /* 卡片排版 */
         .main-content {
             max-width: 900px;
@@ -140,7 +172,6 @@
             opacity: 0;
             transform: translateY(40px);
             transition: var(--transition);
-            /* --- 修正跳轉位置的關鍵代碼 --- */
             scroll-margin-top: 110px; 
         }
 
@@ -196,6 +227,37 @@
             font-size: 0.9rem;
         }
 
+        /* 一鍵聯絡的互動連結樣式 */
+        .contact-link {
+            display: inline-block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-link.phone {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin: 0;
+        }
+
+        .contact-link.phone:hover {
+            color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.email {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .contact-link.email:hover {
+            color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
         footer {
             text-align: center;
             padding-bottom: 60px;
@@ -231,6 +293,10 @@
         <span class="hero-sub">RESUME PORTFOLIO</span>
         <h1>龔孟謙</h1>
         <p class="hero-desc">智慧自動化工程系 | 探索科技與工程技術的無限可能</p>
+        
+        <div class="btn-group">
+            <a href="#about" class="btn btn-primary">了解更多</a>
+        </div>
     </section>
 
     <div class="main-content">
@@ -248,7 +314,7 @@
                     <p style="margin:5px 0;">智慧自動化工程系 (四智三丙)</p>
                     <p style="color:var(--text-muted); font-size:0.9rem;">學號：3B261084</p>
                 </div>
-                <div class="info-item">
+                <div id="experience" class="info-item">
                     <h2>🏢 社團與幹部經驗</h2>
                     <div class="experience-item">
                         <strong>滑板社 幹部</strong>
@@ -348,10 +414,10 @@
 
         <section id="contact" class="card" style="text-align: center;">
             <h2>✉️ 聯絡資訊</h2>
-            <p>期待與您的交流與合作！</p>
-            <div style="margin-top: 35px;">
-                <p style="font-size: 1.5rem; font-weight: 700; color: var(--primary-green); margin:0;">0907-783-181</p>
-                <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 5px;">gggordon100022@gmail.com</p>
+            <p style="margin-bottom: 25px;">期待與您的交流與合作！點擊下方資訊可直接與我聯繫。</p>
+            <div>
+                <a href="tel:0907783181" class="contact-link phone">📞 0907-783-181</a>
+                <a href="mailto:gggordon100022@gmail.com" class="contact-link email">✉️ gggordon100022@gmail.com</a>
             </div>
         </section>
     </div>
