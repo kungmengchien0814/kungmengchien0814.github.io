@@ -10,7 +10,6 @@
     <style>
         /* 定義亮色/深色模式的變數 */
         :root {
-            /* 預設亮色模式 */
             --primary-green: #2d6a4f;
             --accent-green: #52b788;
             --bg-gray: #f4f7f6;
@@ -23,13 +22,12 @@
             --card-shadow: 0 15px 35px rgba(0,0,0,0.03);
             --tag-bg: #f0fdf4;
             --tag-border: #dcfce7;
-            
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         /* 深色模式變數 */
         body.dark-mode {
-            --primary-green: #52b788;  /* 深色模式下用較亮的綠色以確保可讀性 */
+            --primary-green: #52b788;
             --accent-green: #74c69d;
             --bg-gray: #121212;
             --card-white: #1e1e1e;
@@ -106,13 +104,31 @@
             color: var(--primary-green);
         }
 
+        /* 語言切換按鈕 */
+        .lang-switch {
+            margin-left: 25px;
+            padding: 5px 12px;
+            border: 1px solid var(--primary-green);
+            border-radius: 20px;
+            color: var(--primary-green) !important;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .lang-switch:hover {
+            background: var(--primary-green);
+            color: #fff !important;
+        }
+
         /* 深色模式切換按鈕 */
         .theme-toggle {
             background: none;
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
-            margin-left: 25px;
+            margin-left: 15px;
             transition: var(--transition);
             outline: none;
         }
@@ -369,9 +385,10 @@
             .main-content { margin-top: 20px; }
             .profile-pic { width: 130px; height: 130px; }
             
-            /* 手機版導覽列稍微調整以容納主題按鈕 */
-            .nav-links a { margin-left: 15px; font-size: 0.85rem; }
-            .theme-toggle { margin-left: 15px; }
+            /* 手機版導覽列調整 */
+            .nav-links a { margin-left: 12px; font-size: 0.85rem; }
+            .lang-switch { margin-left: 12px; padding: 4px 8px; font-size: 0.75rem; }
+            .theme-toggle { margin-left: 10px; }
             
             .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.2rem; }
         }
@@ -387,6 +404,8 @@
                 <a href="#experience-research">實習&研究</a>
                 <a href="#skills">專業&特長</a>
                 <a href="#contact">聯絡方式</a>
+                
+                <a href="en/" class="lang-switch">🇺🇸 English</a>
                 <button id="themeToggle" class="theme-toggle" title="切換深淺色模式">🌙</button>
             </div>
         </div>
