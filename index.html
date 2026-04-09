@@ -104,17 +104,20 @@
             color: var(--primary-green);
         }
 
-        /* 語言切換按鈕 */
+        /* 語言切換按鈕 (調整字體與大小，讓它更精緻) */
         .lang-switch {
             margin-left: 25px;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border: 1px solid var(--primary-green);
             border-radius: 20px;
             color: var(--primary-green) !important;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .lang-switch:hover {
@@ -405,7 +408,7 @@
                 <a href="#skills">專業&特長</a>
                 <a href="#contact">聯絡方式</a>
                 
-                <a href="en/" class="lang-switch">US English</a>
+                <a href="en/" class="lang-switch">🇺🇸 US</a>
                 <button id="themeToggle" class="theme-toggle" title="切換深淺色模式">🌙</button>
             </div>
         </div>
