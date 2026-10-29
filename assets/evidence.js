@@ -118,6 +118,12 @@ window.EV = {
             zh: ["以 COMSOL 分階段耦合層流場、H₂ 物種傳輸與電流分布，建立 3D 五層簡化模型；用 200 筆模擬資料訓練 MLP 代理模型，再以基因演算法在固定 MEA 尺寸與可加工範圍內搜尋參數。最佳化設計的壓降由 125.3 Pa 降至 80.6 Pa（−35.6%），流速均勻度由 0.672 提高到 0.839（+24.8%），這些是模型條件下的數值結果，尚未經實驗驗證。", "在 40 筆測試資料上，壓降代理模型的 R² 約 0.70，產氫效率模型只有約 −0.21，所以與效率有關的結果只能當作初步參考；我把這點照實寫進了專題報告。", "我負責 COMSOL 建模與模擬、實驗操作與量測、專題網站建置與 Windows 執行檔打包，並協助 Python、機器學習與基因演算法開發。"],
             en: ["A simplified five-layer 3D COMSOL model, solved by coupling laminar flow, H₂ species transport and current distribution in stages. An MLP surrogate trained on 200 simulation samples, then a genetic algorithm searching parameters within a fixed MEA size and machinable limits. The optimized design lowered pressure drop from 125.3 to 80.6 Pa (−35.6%) and raised flow uniformity from 0.672 to 0.839 (+24.8%). These are model results, not yet validated experimentally.", "On 40 test samples the pressure-drop surrogate reached R² ≈ 0.70, but the hydrogen-efficiency surrogate only ≈ −0.21, so efficiency-related results are preliminary. I reported that plainly in the project report.", "I handled COMSOL modeling and simulation, experiments and measurements, the project website and the Windows executable, and helped with the Python, machine-learning and genetic-algorithm code."]
         },
+        links: [{ href: "https://aem-electrolyzer-optimization-site.pages.dev/", label: { zh: "完整專題網站", en: "Full project website" } }],
+        tryIt: {
+            src: "https://aem-mobile-demo.pages.dev/",
+            title: { zh: "AEM 電解槽展場最佳化工具", en: "AEM electrolyzer exhibition calculator" },
+            text: { zh: "專題做的手機版計算工具：輸入 MEA 尺寸求最佳操作條件，或輸入流道參數預測產氫效率與壓降。可以直接在這裡操作。", en: "The project's phone-friendly calculator: enter an MEA size to get optimal operating conditions, or channel parameters to predict hydrogen efficiency and pressure drop. You can use it right here (interface in Chinese)." }
+        },
         items: [
             ["cap-award", "cert", { zh: "系統整合應用組第二名獎狀", en: "2nd Place certificate" }],
             ["cap-team", "photo", { zh: "頒獎後與組員和老師合影", en: "With teammates and teacher after the award" }],
