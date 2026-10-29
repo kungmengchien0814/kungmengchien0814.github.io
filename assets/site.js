@@ -247,7 +247,7 @@
         };
         let W = 0, H = 0, cx = 0, cy = 0, R = 0, dpr = 1;
         let mesh = 0;
-        let paper = "#F4F6F6", line = "#6E7C88", meshLayer = null;
+        let paper = "#F4F6F6", line = "#5C6975", meshLayer = null;
         const parts = [];
         const N = 240;
 
