@@ -16,6 +16,10 @@
             next: "下一張",
             open: "放大檢視",
             sep: "：",
+            prevItem: "上一項",
+            nextItem: "下一項",
+            tryIt: "在這裡試用",
+            openNew: "另開新視窗",
             dark: "深色",
             light: "淺色",
             speed: { 0: "基準", 1: "+22%" },
@@ -29,6 +33,10 @@
             next: "Next",
             open: "Enlarge",
             sep: ": ",
+            prevItem: "Previous item",
+            nextItem: "Next item",
+            tryIt: "Try it here",
+            openNew: "Open in a new tab",
             dark: "Dark",
             light: "Light",
             speed: { 0: "Baseline", 1: "+22%" },
@@ -85,10 +93,17 @@
     const metaEl = el("p");
     const closeBtn = el("button", { class: "icon-btn", type: "button", "aria-label": T.close, text: "×" });
     const bodyEl = el("div", { class: "drawer-body" });
+    const prevItem = el("button", { class: "step-btn prev", type: "button" });
+    const nextItem = el("button", { class: "step-btn next", type: "button" });
+    const posEl = el("span", { class: "pos" });
+    const footEl = el("div", { class: "drawer-foot" }, prevItem, posEl, nextItem);
     const drawer = el("aside", { class: "drawer", role: "dialog", "aria-modal": "true", "aria-labelledby": "drawer-title" },
         el("div", { class: "drawer-head" }, el("div", {}, titleEl, metaEl), closeBtn),
-        bodyEl);
+        bodyEl, footEl);
     document.body.append(scrim, drawer);
+
+    // the reading order of the page's rows, so a reviewer can page through every item without closing the panel
+    const order = [...new Set([...document.querySelectorAll("a.row[data-ev]")].map((a) => a.dataset.ev))].filter((id) => EV[id]);
 
     let current = null;
     let opener = null;
@@ -101,6 +116,20 @@
         bodyEl.replaceChildren();
         if (ev.cite) bodyEl.append(el("p", { class: "cite", text: ev.cite }));
         if (ev.body) bodyEl.append(el("div", { class: "summary" }, ...ev.body[lang].map((t) => el("p", { text: t }))));
+        if (ev.links) bodyEl.append(el("p", { class: "links" }, ...ev.links.map((l) =>
+            el("a", { href: l.href, target: "_blank", rel: "noopener", text: l.label[lang] }))));
+        if (ev.tryIt) {
+            const t = ev.tryIt;
+            const run = el("button", { class: "btn primary", type: "button", text: T.tryIt });
+            const actions = el("div", { class: "try-actions" }, run,
+                el("a", { class: "btn", href: t.src, target: "_blank", rel: "noopener", text: T.openNew }));
+            run.addEventListener("click", () => {
+                const frame = el("iframe", { src: t.src, title: t.title[lang] });
+                run.replaceWith(frame);
+                actions.classList.add("running");
+            });
+            bodyEl.append(el("div", { class: "try" }, el("p", { text: t.text[lang] }), actions));
+        }
         const gallery = el("div", { class: "gallery" });
         ev.items.forEach(([name, kind, cap], i) => {
             const [w, h] = SIZE[name] || [1600, 1200];
@@ -111,7 +140,32 @@
         });
         bodyEl.append(gallery);
         bodyEl.scrollTop = 0;
+        renderNav(id);
     }
+
+    function renderNav(id) {
+        const i = order.indexOf(id);
+        footEl.hidden = i < 0;
+        if (i < 0) return;
+        const n = order.length;
+        const fill = (btn, target, label, arrow) => {
+            btn.dataset.go = target;
+            btn.setAttribute("aria-label", `${label}${T.sep}${EV[target].title[lang]}`);
+            const parts = [el("span", { class: "arrow", text: arrow, "aria-hidden": "true" }), el("span", { class: "lbl", text: EV[target].title[lang] })];
+            btn.replaceChildren(...(arrow === "‹" ? parts : parts.reverse()));
+        };
+        fill(prevItem, order[(i - 1 + n) % n], T.prevItem, "‹");
+        fill(nextItem, order[(i + 1) % n], T.nextItem, "›");
+        posEl.textContent = `${i + 1} / ${n}`;
+    }
+    function go(id) {
+        if (!EV[id]) return;
+        current = id;
+        history.replaceState(null, "", `#ev-${id}`);
+        render(id);
+    }
+    prevItem.addEventListener("click", () => go(prevItem.dataset.go));
+    nextItem.addEventListener("click", () => go(nextItem.dataset.go));
 
     function openDrawer(id) {
         if (!EV[id]) return;
@@ -197,6 +251,14 @@
         const hide = () => { box.classList.remove("open"); back?.focus({ preventScroll: true }); };
         close.addEventListener("click", hide);
         box.addEventListener("click", (e) => { if (e.target === box) hide(); });
+        // swipe left or right on a phone to change image
+        let sx = 0, sy = 0;
+        box.addEventListener("touchstart", (e) => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+        box.addEventListener("touchend", (e) => {
+            if (e.touches.length || list.length < 2) return;
+            const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+            if (Math.abs(dx) > 50 && Math.abs(dx) > 1.5 * Math.abs(dy)) step(dx < 0 ? 1 : -1);
+        }, { passive: true });
         return {
             open(items, i) { list = items; idx = i; back = document.activeElement; show(); box.classList.add("open"); close.focus(); },
             isOpen: () => box.classList.contains("open"),
@@ -209,7 +271,11 @@
             if (e.key === "Escape") lightbox.hide();
             else if (e.key === "ArrowLeft") lightbox.step(-1);
             else if (e.key === "ArrowRight") lightbox.step(1);
-        } else if (current && e.key === "Escape") closeDrawer();
+        } else if (current) {
+            if (e.key === "Escape") closeDrawer();
+            else if (e.key === "ArrowLeft" && !footEl.hidden) go(prevItem.dataset.go);
+            else if (e.key === "ArrowRight" && !footEl.hidden) go(nextItem.dataset.go);
+        }
     });
 
     /* ---------- section nav highlight ---------- */
