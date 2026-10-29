@@ -139,7 +139,7 @@ html[lang="en"] .hero h1 { letter-spacing: 0; font-family: var(--font-num); font
 
 /* flow cell */
 .cell { margin: 0; }
-.cell-stage { position: relative; aspect-ratio: 5 / 4; }
+.cell-stage { position: relative; aspect-ratio: 6 / 5; }
 .cell-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .cell-stage .lbl { position: absolute; font-size: 0.8rem; color: var(--ink-3); white-space: nowrap; pointer-events: none; }
 .cell-stage .lbl.in { left: 0; top: calc(50% + 14px); }
@@ -159,9 +159,10 @@ html[lang="en"] .hero h1 { letter-spacing: 0; font-family: var(--font-num); font
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .readout { display: flex; gap: 24px; font-size: 0.85rem; color: var(--ink-3); }
 .readout b { display: block; font: 600 1.25rem/1.2 var(--font-num); color: var(--ink); }
-.scale { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 0.8rem; color: var(--ink-3); }
-.scale i { flex: 0 0 120px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #2B3A86, #2C7BB6, #2BB3B1, #9BD3A0, #F2B134); }
-.cell figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--ink-3); line-height: 1.6; }
+.scale { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; font-size: 0.8rem; color: var(--ink-3); white-space: nowrap; }
+.scale i { flex: 0 0 96px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #2B3A86, #2C7BB6, #2BB3B1, #9BD3A0, #F2B134); }
+.cell figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--ink-3); line-height: 1.6; }
+.cell figcaption > span:last-child { flex: 1 1 18em; }
 
 /* ---------- sections ---------- */
 .block { padding: 56px 0; border-top: 1px solid var(--rule); }
@@ -186,13 +187,13 @@ html[lang="en"] .hero h1 { letter-spacing: 0; font-family: var(--font-num); font
 .path li:nth-child(6) { --c: #B8C87C; --c2: #F2B134; }
 .path li:nth-child(7) { --c: #F2B134; }
 .path li:nth-child(8) { --c: var(--ink-3); }
-.path a, .path .future { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 4px 6px; color: inherit; text-decoration: none; border-radius: 8px; }
+.path a, .path .future { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 0 2px 6px; color: inherit; text-decoration: none; border-radius: 8px; }
 .dot { position: relative; z-index: 1; width: 21px; height: 21px; margin-bottom: 8px; border-radius: 50%; border: 3px solid var(--c); background: var(--paper); transition: transform 0.15s ease, background 0.15s ease; }
 .path .future .dot { border-style: dashed; }
 .path a:hover .dot, .path a:focus-visible .dot { background: var(--c); transform: scale(1.18); }
 .path a:hover .step { color: var(--accent); }
 .path .venue { font: 600 0.82rem/1.3 var(--font-num); color: var(--ink-3); }
-.path .step { font-weight: 600; font-size: 0.92rem; line-height: 1.4; }
+.path .step { font-weight: 600; font-size: 0.9rem; line-height: 1.4; }
 .path .gain { font-size: 0.8rem; line-height: 1.35; color: var(--ink-2); }
 .path-note { margin: 10px 0 0; font-size: 0.88rem; color: var(--ink-3); }
 
@@ -341,7 +342,8 @@ footer { padding: 32px 0 48px; border-top: 1px solid var(--rule); color: var(--i
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
     .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
-    .cell { max-width: 520px; }
+    /* one column on tablets: the figure spans the column in a wide frame, pipes running to both edges */
+    .cell-stage { aspect-ratio: 16 / 9; }
     .block > .wrap { grid-template-columns: 1fr; gap: 20px; }
     .block-head > div { position: static; }
 }
@@ -353,6 +355,7 @@ footer { padding: 32px 0 48px; border-top: 1px solid var(--rule); color: var(--i
     .sections { order: 3; flex-basis: calc(100% + 32px); margin: 8px -16px 0; padding: 0 10px 8px; }
     .hero { padding: 40px 0 48px; }
     .who { gap: 18px; }
+    .cell-stage { aspect-ratio: 6 / 5; }
     .portrait { width: 92px; height: 92px; border-radius: 10px; }
     .lead { font-size: 1.15rem; }
     .facts li { grid-template-columns: 5.4rem minmax(0, 1fr); }
