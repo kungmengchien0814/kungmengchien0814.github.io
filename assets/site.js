@@ -82,7 +82,7 @@
         if (row.classList.contains("row")) {
             const first = ev.items[0][0];
             row.append(el("span", { class: "ev", "aria-hidden": "true" },
-                el("img", { src: src(first, true), alt: "", loading: "lazy", width: "72", height: "72" }),
+                el("img", { src: src(first, true), alt: "", loading: "lazy", decoding: "async", width: "72", height: "72" }),
                 el("span", { text: T.items(ev.items.length) })));
         }
     });
@@ -279,6 +279,7 @@
     });
 
     /* ---------- section nav highlight ---------- */
+    const navBar = document.querySelector(".sections");
     const links = [...document.querySelectorAll(".sections a")];
     const byId = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
     const io = new IntersectionObserver((entries) => {
@@ -286,9 +287,13 @@
             if (!en.isIntersecting) return;
             links.forEach((a) => a.removeAttribute("aria-current"));
             const a = byId.get(en.target.id);
-            if (a) {
-                a.setAttribute("aria-current", "true");
-                a.scrollIntoView({ block: "nearest", inline: "nearest" });
+            if (!a) return;
+            a.setAttribute("aria-current", "true");
+            // Keep the active link visible in the phone's sideways nav by scrolling only the nav itself.
+            // scrollIntoView would also touch the page scroll and cut off the reader's swipe.
+            if (navBar && navBar.scrollWidth > navBar.clientWidth) {
+                const nr = navBar.getBoundingClientRect(), ar = a.getBoundingClientRect();
+                if (ar.left < nr.left || ar.right > nr.right) navBar.scrollLeft += ar.left - nr.left - 12;
             }
         });
     }, { rootMargin: "-35% 0px -60% 0px" });
@@ -315,7 +320,9 @@
         let mesh = 0;
         let paper = "#F4F6F6", line = "#5C6975", meshLayer = null;
         const parts = [];
-        const N = 240;
+        // a fixed palette, so frames do not build a new colour string for every particle
+        const BINS = 14;
+        const palette = Array.from({ length: BINS }, (_, i) => colorAt(i / (BINS - 1)));
 
         const weight = (s, m) => (m ? 1 - 0.3 * s * s : Math.exp(-((s / 0.3) ** 2)) + 0.03);
         const sampleS = (m) => {
@@ -353,14 +360,15 @@
         }
         function resize() {
             const r = cv.getBoundingClientRect();
-            dpr = Math.min(2, window.devicePixelRatio || 1);
+            dpr = Math.min(1.5, window.devicePixelRatio || 1);
             W = r.width; H = r.height;
             cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             cx = W / 2; cy = H / 2; R = Math.min(W * 0.4, H * 0.42);
             buildMesh();
             parts.length = 0;
-            for (let i = 0; i < N; i++) { const p = {}; spawn(p, true); parts.push(p); }
+            const n = W < 500 ? 140 : 220;
+            for (let i = 0; i < n; i++) { const p = {}; spawn(p, true); parts.push(p); }
             clear();
         }
         function buildMesh() {
@@ -379,12 +387,9 @@
             m.restore();
         }
         function frame() {
-            ctx.save();
-            ctx.beginPath(); ctx.arc(cx, cy, R + 1, 0, Math.PI * 2);
-            ctx.rect(cx - R - 60, cy - 7, 60, 14); ctx.rect(cx + R, cy - 7, 60, 14);
-            ctx.clip();
+            // fade the trails; nothing else lives on this canvas, so no clipping is needed
             ctx.globalAlpha = 0.14; ctx.fillStyle = paper; ctx.fillRect(0, 0, W, H);
-            ctx.restore();
+            ctx.globalAlpha = 1;
         }
         function clear() { ctx.fillStyle = paper; ctx.fillRect(0, 0, W, H); outline(); }
         function outline() {
@@ -410,19 +415,26 @@
             ctx.globalAlpha = 1;
             outline();
         }
-        let raf = 0, last = 0, visible = true;
+        let raf = 0, last = 0, visible = true, quietUntil = 0, odd = false;
+        // While the reader is scrolling, hold the animation still so the page scroll gets the whole frame budget.
+        window.addEventListener("scroll", () => { quietUntil = performance.now() + 160; }, { passive: true });
         function tick(t) {
             raf = requestAnimationFrame(tick);
+            if (t < quietUntil) { last = t; return; }
+            odd = !odd;
+            if (W < 500 && odd) return; // phones: draw at half the frame rate
             const dt = Math.min(48, t - last || 16); last = t;
             frame();
             const base = 0.00016 * dt;
-            ctx.lineWidth = 2; ctx.lineCap = "round";
+            // short separate strokes with butt caps and a fixed palette measured fastest (~0.2 ms a frame);
+            // merging them into one path per colour was slower
+            ctx.lineWidth = 2; ctx.lineCap = "butt";
             for (const p of parts) {
                 const ends = 1 + 1.4 * (Math.exp(-p.u / 0.07) + Math.exp(-(1 - p.u) / 0.07));
                 p.u += (base * p.v * ends * (2 * R)) / p.g.L;
                 if (p.u >= 1) { spawn(p, false); continue; }
                 const pt = point(p, p.u);
-                ctx.strokeStyle = colorAt((p.v * ends) / 2.6);
+                ctx.strokeStyle = palette[Math.min(BINS - 1, Math.round(Math.min(1, (p.v * ends) / 2.6) * (BINS - 1)))];
                 ctx.beginPath(); ctx.moveTo(p.prev[0], p.prev[1]); ctx.lineTo(pt[0], pt[1]); ctx.stroke();
                 p.prev = pt;
             }
