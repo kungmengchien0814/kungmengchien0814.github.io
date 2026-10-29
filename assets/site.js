@@ -364,7 +364,7 @@
             W = r.width; H = r.height;
             cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            cx = W / 2; cy = H / 2; R = Math.min(W * 0.4, H * 0.42);
+            cx = W / 2; cy = H / 2; R = Math.min(W * 0.41, H * 0.45);
             buildMesh();
             parts.length = 0;
             const n = W < 500 ? 140 : 220;
@@ -397,8 +397,9 @@
             ctx.strokeStyle = line; ctx.lineWidth = 1.4;
             ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
             ctx.lineWidth = 1;
-            for (const x of [cx - R - 46, cx + R]) {
-                ctx.beginPath(); ctx.moveTo(x, cy - 7); ctx.lineTo(x + 46, cy - 7); ctx.moveTo(x, cy + 7); ctx.lineTo(x + 46, cy + 7); ctx.stroke();
+            const stub = Math.max(16, cx - R - 2); // pipes run from the frame edge to the cell
+            for (const x of [cx - R - stub, cx + R]) {
+                ctx.beginPath(); ctx.moveTo(x, cy - 7); ctx.lineTo(x + stub, cy - 7); ctx.moveTo(x, cy + 7); ctx.lineTo(x + stub, cy + 7); ctx.stroke();
             }
         }
         function staticPicture() {

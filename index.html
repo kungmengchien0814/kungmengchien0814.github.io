@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/site.css">
+    <link rel="stylesheet" href="assets/site.css?v=20261030b">
     <script>try { var t = localStorage.getItem("theme"); if (t === "dark" || t === "light") document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
@@ -47,7 +47,7 @@
                         <h1>龔孟謙<span class="latin" lang="en">Kung Meng-Chien</span></h1>
                     </div>
                     <p class="lead">國立勤益科技大學 智慧自動化工程系<br>AEM 電解槽流場模擬與最佳化</p>
-                    <p class="statement">我用 COMSOL 研究陰離子交換膜（AEM）電解槽的流場與結構設計，兩年發表 7 篇研討會論文，都由我上台報告。研究所想繼續研究電解槽流道內的氣液兩相流。</p>
+                    <p class="statement">我用 COMSOL 研究陰離子交換膜（AEM）電解槽的流場與結構設計，兩年發表 7 篇研討會論文，都由我上台報告。研究所階段，我想延續 CFD 建模、與實驗比對和最佳化的流程，處理更複雜的熱流問題，例如電解槽內的氣液兩相流、高熱通量冷卻流道的共軛熱傳，以及微流道內的流場與物質傳輸。</p>
                     <ul class="facts">
                         <li><b>7 篇</b>研討會論文，2 篇英文口頭發表</li>
                         <li><b>優等</b>HEFC 2024 一般論文組</li>
@@ -76,8 +76,7 @@
                             <div><b data-r="dp">基準</b>進出口壓降</div>
                         </div>
                     </div>
-                    <div class="scale" aria-hidden="true">低速<i></i>高速</div>
-                    <figcaption>示意動畫，依我在 ILASS-Asia 2025 發表的單電池模擬結果繪製，不是 CFD 解。沒有鎳網時流動集中在中央、膜面附近有停滯區；加入鎳網後分布較均勻，但流阻大幅上升。<a href="#ev-ilass2025" data-ev="ilass2025">看原始模擬圖</a></figcaption>
+                    <figcaption><span class="scale" aria-hidden="true">低速<i></i>高速</span><span>示意動畫，依 ILASS-Asia 2025 單電池模擬結果繪製，不是 CFD 解。<a href="#ev-ilass2025" data-ev="ilass2025">看原始模擬圖</a></span></figcaption>
                 </figure>
             </div>
         </section>
@@ -100,7 +99,7 @@
                         <li><a data-ev="hefc2025"><span class="dot"></span><span class="venue">HEFC 2025</span><span class="step">耦合熱傳與 OH⁻</span><span class="gain">均勻度約 93%</span></a></li>
                         <li><a data-ev="ilass2025"><span class="dot"></span><span class="venue">ILASS-Asia 2025</span><span class="step">鎳網的取捨</span><span class="gain">流速 +22%，壓降 17 倍</span></a></li>
                         <li><a data-ev="acra2026"><span class="dot"></span><span class="venue">ACRA 2026</span><span class="step">擴散道最佳化</span><span class="gain">壓降 −34%</span></a></li>
-                        <li><span class="future"><span class="dot"></span><span class="venue">研究所</span><span class="step">氣液兩相流</span><span class="gain">下一步</span></span></li>
+                        <li><span class="future"><span class="dot"></span><span class="venue">研究所</span><span class="step">更複雜的熱流問題</span><span class="gain">兩相流、冷卻流道、微流道</span></span></li>
                     </ol>
                     <p class="path-note">每一篇都建立在前一篇的模型上。點任一篇可以看佐證。</p>
 
@@ -426,7 +425,7 @@
         <div class="wrap">© 2026 龔孟謙 Kung Meng-Chien</div>
     </footer>
 
-    <script src="assets/evidence.js"></script>
-    <script src="assets/site.js"></script>
+    <script src="assets/evidence.js?v=20261030b"></script>
+    <script src="assets/site.js?v=20261030b"></script>
 </body>
 </html>
