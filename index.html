@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>龔孟謙 | Kung Meng-Chien Portfolio</title>
-    
+    <meta name="description" content="龔孟謙，國立勤益科技大學智慧自動化工程系。研究 AEM 電解槽流場模擬與最佳化，發表 7 篇研討會論文，含 2 篇英文口頭發表。">
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* 定義亮色/深色模式的變數 */
         :root {
@@ -24,7 +25,6 @@
             --tag-border: #dcfce7;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-
         /* 深色模式變數 */
         body.dark-mode {
             --primary-green: #52b788;
@@ -40,12 +40,10 @@
             --tag-bg: #2d3748;
             --tag-border: #4a5568;
         }
-
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
-
         body {
             background-color: var(--bg-gray);
             color: var(--text-dark);
@@ -55,7 +53,6 @@
             line-height: 1.8;
             transition: background-color 0.4s ease, color 0.4s ease;
         }
-
         /* 頂部導覽列 */
         nav {
             position: fixed;
@@ -67,7 +64,6 @@
             border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
         }
-
         .nav-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -76,7 +72,6 @@
             align-items: center;
             padding: 15px 25px;
         }
-
         .nav-logo {
             font-weight: 700;
             color: var(--primary-green);
@@ -85,12 +80,10 @@
             letter-spacing: 1px;
             transition: var(--transition);
         }
-
         .nav-links {
             display: flex;
             align-items: center;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--text-muted);
@@ -99,11 +92,9 @@
             font-weight: 500;
             transition: var(--transition);
         }
-
         .nav-links a:hover {
             color: var(--primary-green);
         }
-
         /* 語言切換按鈕 (調整字體與大小，讓它更精緻) */
         .lang-switch {
             margin-left: 25px;
@@ -119,12 +110,10 @@
             align-items: center;
             gap: 4px;
         }
-
         .lang-switch:hover {
             background: var(--primary-green);
             color: #fff !important;
         }
-
         /* 深色模式切換按鈕 */
         .theme-toggle {
             background: none;
@@ -135,24 +124,21 @@
             transition: var(--transition);
             outline: none;
         }
-
         .theme-toggle:hover {
             transform: scale(1.1) rotate(15deg);
         }
-
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 110px 20px 130px;
             background: var(--hero-bg);
             transition: var(--transition);
         }
-
         .profile-pic {
             width: 160px;
             height: 160px;
@@ -163,12 +149,10 @@
             margin-bottom: 25px;
             transition: var(--transition);
         }
-
         .profile-pic:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15);
         }
-
         .hero-sub {
             color: var(--accent-green);
             font-weight: 700;
@@ -177,7 +161,6 @@
             font-size: 0.9rem;
             transition: var(--transition);
         }
-
         .hero h1 {
             font-size: 3.5rem;
             margin: 0;
@@ -185,22 +168,46 @@
             letter-spacing: 2px;
             transition: var(--transition);
         }
-
         .hero-desc {
             font-size: 1.2rem;
             color: var(--text-muted);
             margin-top: 15px;
-            max-width: 600px;
+            max-width: 720px;
             transition: var(--transition);
         }
-
+        /* 數據摘要 */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+            width: 100%;
+            max-width: 720px;
+        }
+        .stat {
+            background: var(--card-white);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 12px 10px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        .stat b {
+            display: block;
+            font-size: 1.4rem;
+            line-height: 1.3;
+            color: var(--primary-green);
+        }
+        .stat span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
         .btn-group {
             margin-top: 30px;
             display: flex;
             gap: 15px;
             justify-content: center;
         }
-
         .btn {
             padding: 12px 35px;
             border-radius: 50px;
@@ -209,14 +216,12 @@
             font-size: 1rem;
             transition: var(--transition);
         }
-
         .btn-primary {
             background: var(--primary-green);
             color: #ffffff;
             border: 2px solid var(--primary-green);
             box-shadow: 0 4px 15px rgba(45, 106, 79, 0.2);
         }
-
         .btn-primary:hover {
             background: var(--accent-green);
             border-color: var(--accent-green);
@@ -224,14 +229,22 @@
             box-shadow: 0 8px 20px rgba(82, 183, 136, 0.4);
             color: #ffffff;
         }
-
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+        .btn-outline:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
         /* 卡片排版 */
         .main-content {
             max-width: 900px;
             margin: -80px auto 100px;
             padding: 0 20px;
         }
-
         .card {
             background: var(--card-white);
             border-radius: 30px;
@@ -242,14 +255,12 @@
             opacity: 0;
             transform: translateY(40px);
             transition: var(--transition);
-            scroll-margin-top: 110px; 
+            scroll-margin-top: 110px;
         }
-
         .card.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         h2 {
             font-size: 1.6rem;
             color: var(--primary-green);
@@ -260,13 +271,27 @@
             gap: 12px;
             transition: var(--transition);
         }
-
+        h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin: 35px 0 5px;
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+        h2 + h3 {
+            margin-top: 0;
+        }
+        .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0 0 12px;
+            transition: var(--transition);
+        }
         .tag-container {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
         }
-
         .tag {
             background: var(--tag-bg);
             color: var(--primary-green);
@@ -277,66 +302,203 @@
             border: 1px solid var(--tag-border);
             transition: var(--transition);
         }
-
         .tag:hover {
             background: var(--primary-green);
             color: #ffffff;
             border-color: var(--primary-green);
         }
-
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
         }
-
         .experience-item {
             margin-bottom: 15px;
         }
-
         .experience-item strong {
             display: block;
             color: var(--text-dark);
             font-size: 1.05rem;
             transition: var(--transition);
         }
-
         .experience-item span {
             color: var(--text-muted);
             font-size: 0.9rem;
             transition: var(--transition);
         }
-
+        .experience-item p {
+            margin: 5px 0 0;
+        }
+        /* 研究時間軸 */
+        .timeline {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 6px;
+            border-left: 2px solid var(--tag-border);
+        }
+        .timeline li {
+            position: relative;
+            padding: 0 0 16px 24px;
+        }
+        .timeline li:last-child {
+            padding-bottom: 0;
+        }
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+        .timeline .when {
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-right: 8px;
+        }
+        /* 成果數據區塊 */
+        .highlight {
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            border-radius: 18px;
+            padding: 18px 24px;
+            margin: 20px 0 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 40px;
+            transition: var(--transition);
+        }
+        .highlight div {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .highlight b {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--primary-green);
+        }
+        /* 論文列表 */
+        .pub-list {
+            padding-left: 1.4em;
+            margin: 0;
+        }
+        .pub-list li {
+            margin-bottom: 16px;
+        }
+        .pub-list li:last-child {
+            margin-bottom: 0;
+        }
+        .pub-list .venue {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1.6;
+            padding: 1px 10px;
+            border-radius: 50px;
+            background: var(--primary-green);
+            color: #ffffff;
+            margin-left: 6px;
+            vertical-align: 2px;
+        }
+        /* 專案卡片 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .project {
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 22px 24px;
+            background: var(--bg-gray);
+            transition: var(--transition);
+        }
+        .project strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .project p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        /* 連結 */
+        .link-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .link-chip {
+            text-decoration: none;
+            color: var(--primary-green);
+            border: 1px solid var(--primary-green);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .link-chip:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+        }
+        .site-list .experience-item a {
+            display: block;
+            color: var(--primary-green);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .site-list .experience-item a:hover {
+            text-decoration: underline;
+        }
+        .skill-row {
+            margin-bottom: 20px;
+        }
+        .skill-row:last-child {
+            margin-bottom: 0;
+        }
+        .skill-row h4 {
+            margin: 0 0 10px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
         .contact-link {
             display: inline-block;
             text-decoration: none;
             transition: var(--transition);
         }
-
         .contact-link.phone {
             font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary-green);
             margin: 0;
         }
-
         .contact-link.phone:hover {
             color: var(--accent-green);
             transform: translateY(-2px);
         }
-
         .contact-link.email {
             font-size: 1.1rem;
             color: var(--text-muted);
             margin-top: 5px;
             display: block;
         }
-
         .contact-link.email:hover {
             color: var(--primary-green);
             transform: translateY(-2px);
         }
-
         footer {
             text-align: center;
             padding-bottom: 60px;
@@ -344,7 +506,6 @@
             font-size: 0.85rem;
             transition: var(--transition);
         }
-
         /* 回到頂部按鈕 */
         .back-to-top {
             position: fixed;
@@ -368,191 +529,343 @@
             justify-content: center;
             align-items: center;
         }
-
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
         .back-to-top:hover {
             background: var(--accent-green);
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
+            .hero-desc span { display: block; }
+            .hero-desc .sep { display: none; }
             .info-grid { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr 1fr; }
             .card { padding: 35px 25px; }
             .main-content { margin-top: 20px; }
             .profile-pic { width: 130px; height: 130px; }
-            
+
             /* 手機版導覽列調整 */
-            .nav-links a { margin-left: 12px; font-size: 0.85rem; }
-            .lang-switch { margin-left: 12px; padding: 4px 8px; font-size: 0.75rem; }
-            .theme-toggle { margin-left: 10px; }
-            
+            .nav-container { padding: 12px 16px; }
+            .nav-logo { display: none; }
+            .nav-links { width: 100%; justify-content: space-between; }
+            .nav-links a { margin-left: 0; font-size: 0.85rem; }
+            .lang-switch { margin-left: 0; padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
+            .nav-optional { display: none; }
+            .theme-toggle { margin-left: 0; }
+
             .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
             <a href="#" class="nav-logo">KUNG MENG-CHIEN</a>
             <div class="nav-links">
                 <a href="#about">關於我</a>
-                <a href="#experience-research">實習&研究</a>
-                <a href="#skills">專業&特長</a>
-                <a href="#contact">聯絡方式</a>
-                
+                <a href="#research">研究</a>
+                <a href="#experience">經歷</a>
+                <a href="#skills">技能</a>
+                <a href="#contact">聯絡</a>
+
                 <a href="en/" class="lang-switch">🇺🇸 English</a>
                 <button id="themeToggle" class="theme-toggle" title="切換深淺色模式">🌙</button>
             </div>
         </div>
     </nav>
-
     <section class="hero">
         <img src="profile.jpg" alt="龔孟謙 個人照" class="profile-pic">
         <span class="hero-sub">RESUME PORTFOLIO</span>
         <h1>龔孟謙</h1>
-        <p class="hero-desc">智慧自動化工程系 | 探索科技與工程技術的無限可能</p>
-        
+        <p class="hero-desc"><span>智慧自動化工程系</span><span class="sep">｜</span><span>AEM 電解槽流場模擬與最佳化</span></p>
+        <div class="hero-stats">
+            <div class="stat"><b>7 篇</b><span>研討會論文</span></div>
+            <div class="stat"><b>2 篇</b><span>英文口頭發表</span></div>
+            <div class="stat"><b>優等</b><span>HEFC 2024 論文</span></div>
+        </div>
+
         <div class="btn-group">
             <a href="#about" class="btn btn-primary">了解更多</a>
+            <a href="#research" class="btn btn-outline">研究成果</a>
         </div>
     </section>
-
     <div class="main-content">
         <section id="about" class="card">
             <h2>👤 關於我</h2>
-            <p>我是龔孟謙，目前就讀於 **國立勤益科技大學 智慧自動化工程系**。我對人工智慧、程式開發與自動化系統整合擁有極大的熱忱。我擅長將理論轉化為實作，並在解決複雜技術問題的過程中獲得成就感。</p>
-            <p>除了技術領域，我也積極投入社群與班級事務，透過擔任幹部磨練領導與溝通能力。我認為跨領域的結合與積極的服務態度，是身為工程師不可或缺的特質。</p>
+            <p>我是龔孟謙，就讀<strong>國立勤益科技大學智慧自動化工程系</strong>，預計 2027 年 6 月畢業。2024 年起加入陳鵬仁老師的研究團隊，在工研院綠能與環境研究所的技術與設備協助下，研究陰離子交換膜（AEM）電解槽的流場與結構設計。兩年間發表 7 篇研討會論文，都由我上台報告，其中 2 篇是在國際研討會以英文口頭發表。</p>
+            <p>研究之外，我也接觸過 CNC／CAM 加工、工業機械手臂與半導體製程，寫過電腦視覺和 CNC 連線程式，並把專題成果做成可以操作的網站。研究所階段，我想從目前只計算單相液體流動的模型，進一步研究電解槽流道內的氣液兩相流。</p>
         </section>
-
         <section class="card">
-            <div class="info-grid">
-                <div class="info-item">
-                    <h2>🎓 教育背景</h2>
-                    <h3 style="margin:0; font-size:1.2rem;">國立勤益科技大學</h3>
-                    <p style="margin:5px 0;">智慧自動化工程系 (四智三丙)</p>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">學號：</p>
-                </div>
-                <div id="experience" class="info-item">
-                    <h2>🏢 社團與幹部經驗</h2>
-                    <div class="experience-item">
-                        <strong>滑板社 幹部</strong>
-                        <span>負責社團行政運作、活動規劃與推廣。</span>
-                    </div>
-                    <div class="experience-item">
-                        <strong>班代</strong>
-                        <span>統籌班級事務、作為師生溝通橋樑，具備優秀協調力。</span>
-                    </div>
-                    <div class="experience-item">
-                        <strong>副班代</strong>
-                        <span>輔助班代執行班級行政任務，確保團隊運作流暢。</span>
-                    </div>
-                </div>
+            <h2>🎓 教育背景</h2>
+            <h3>國立勤益科技大學　智慧自動化工程系</h3>
+            <p class="meta">2023.09 入學・2027.06 應屆畢業</p>
+            <p>重點科目：熱力學、流體力學、製造學、工程數學、材料科學與工程、數值分析</p>
+            <h3>跨校修課</h3>
+            <div class="experience-item">
+                <strong>國立中正大學｜綠色工具機實作應用</strong>
+                <span>2024 暑修・3 學分</span>
+                <p>用 NX CAM、Mastercam 規劃刀具路徑並跑加工模擬，再操作 CNC 加工中心完成實體工件。</p>
             </div>
-        </section>
-
-        <section id="experience-research" class="card">
-            <h2>💼 實習經驗</h2>
             <div class="experience-item" style="margin-bottom: 0;">
-                <strong style="font-size: 1.2rem; color: var(--primary-green); margin-bottom: 5px;">正裕科技工程股份有限公司 | 機電工程師</strong>
-                <p style="margin: 10px 0 5px 0; color: var(--text-dark);"><strong>工作內容：</strong>機電系統的設計、開發、安裝、測試、維修與保養。</p>
-                <p style="margin: 0; color: var(--text-dark);"><strong>工作範圍：</strong>涵蓋電力、空調、給排水、消防系統。</p>
+                <strong>國立中興大學｜半導體製造技術、半導體元件物理</strong>
+                <span>2025 暑修</span>
+                <p>薄膜沉積、離子佈植、蝕刻、CMP 等製程，以及 p-n 接面與 MOSFET 等元件物理。</p>
             </div>
         </section>
+        <section id="research" class="card">
+            <h2>🔬 研究經歷</h2>
+            <h3>AEM 電解槽流場與結構最佳化</h3>
+            <p class="meta">2024 – 至今｜指導教授：陳鵬仁｜協助單位：工研院綠能與環境研究所</p>
+            <p>以 COMSOL 建立 AEM 電解槽三維流場模型，從比較單一結構參數開始，逐步加入實驗驗證、參數最佳化與多物理場耦合。</p>
+            <ul class="timeline">
+                <li><span class="when">2024</span>HEFC 2024：比較鎳網層與出入口擴散道對壓降、流場均勻度的影響，獲一般論文組優等。</li>
+                <li><span class="when">2024</span>ACMT 2024：做網格獨立測試，並與工研院實驗壓降資料比對，網格 400 萬時平均誤差約 0.006 bar。</li>
+                <li><span class="when">2024–25</span>CSME 2024／ISME 2025：以反應曲面法與牛頓梯度法最佳化入口擴散角、入口流量與鎳網厚度，性能指標（平均流速／壓降）比現行產品參數高約 20%。</li>
+                <li><span class="when">2025</span>HEFC 2025：耦合流場、固液熱傳與 OH⁻ 離子傳輸的單電池模型，入口流速 0.1 m/s 時主流道速度均勻度約 93%。</li>
+                <li><span class="when">2025</span>ILASS-Asia 2025：流場與熱管理共同設計，比較通道深寬比、入口擴散、局部肋片與鎳網的影響；第一作者、英文口頭發表。</li>
+                <li><span class="when">2026</span>ACRA 2026：加入出口擴散道後，壓降比基準設計低約 34%；第一作者、英文口頭發表，為國科會計畫（NSTC 114-2637-E-167-015）成果。</li>
+            </ul>
 
+            <h3>應用機器學習與基因演算法進行電解槽幾何數據最佳化<span class="badge">系專題競賽第二名</span></h3>
+            <p class="meta">大三專題｜3 人小組・組長｜114 學年度系專題成果競賽 系統整合應用組 第二名</p>
+            <p>以 COMSOL 分階段耦合層流場、H₂ 物種傳輸與電流分布，建立 3D 五層簡化模型；再用 200 筆模擬資料訓練 MLP 代理模型，以基因演算法在可加工範圍內搜尋流道參數。我負責建模與模擬、實驗操作與量測、專題網站與 Windows 執行檔打包，並協助 Python、機器學習與基因演算法開發。</p>
+            <div class="highlight">
+                <div><b>125.3 → 80.6 Pa</b>壓降（−35.6%）</div>
+                <div><b>0.672 → 0.839</b>流速均勻度（+24.8%）</div>
+            </div>
+            <p class="meta">以上為模型條件下的數值結果，尚未經實驗驗證。</p>
+            <div class="link-list">
+                <a class="link-chip" href="https://aem-electrolyzer-optimization-site.pages.dev/" target="_blank" rel="noopener">專題展示網站 ↗</a>
+            </div>
+        </section>
+        <section id="publications" class="card">
+            <h2>📄 研討會論文</h2>
+            <p class="meta">共 7 篇（國際研討會 3 篇・英文口頭發表 2 篇），皆由本人上台報告。＊為通訊作者。</p>
+            <ol class="pub-list">
+                <li><strong>Meng-Chien Kung</strong>, Peng-Jen Chen＊, “Flow-Field Optimization of an Anion-Exchange-Membrane Water Electrolyzer Cell”
+                    <span class="venue">ACRA 2026 第 12 屆亞洲冷凍空調研討會（ACRA2026-031）｜國際研討會・第一作者・英文口頭發表</span></li>
+                <li><strong>Meng-Chien Kung</strong>, Peng-Jen Chen＊, “Flow-Field and Thermal Characteristics of Single-Cell AEM Electrolyzer”
+                    <span class="venue">ILASS-Asia 2025 第 24 屆亞洲液體霧化與噴霧系統研討會（國立成功大學）｜國際研討會・第一作者・英文口頭發表</span></li>
+                <li>陳鵬仁、<strong>龔孟謙</strong>＊，〈AEM 陰離子膜電解槽流道設計與傳熱數值分析〉
+                    <span class="venue">HEFC 2025 國際氫能與燃料電池學術研討會（PH-100）｜國際研討會・口頭發表</span></li>
+                <li><strong>龔孟謙</strong>，〈AEM 電解氫槽結構參數最佳化〉
+                    <span class="venue">ISME 2025 第十屆台灣機電工程國際學會全國學術研討會（Paper 150）｜口頭發表</span></li>
+                <li>陳鵬仁、<strong>龔孟謙</strong>＊，〈AEM 電解氫槽結構參數最佳化〉
+                    <span class="venue">CSME 2024 中國機械工程學會第四十一屆全國學術研討會（E17-005）｜口頭發表</span></li>
+                <li>陳鵬仁、<strong>龔孟謙</strong>＊、林志嘉、許豐家，〈電解槽近膜流場特性數值模擬研究〉
+                    <span class="venue">ACMT 2024 第二屆臺灣計算力學學會年會｜迷你論壇口頭發表</span></li>
+                <li>陳鵬仁、<strong>龔孟謙</strong>＊，〈電解氫設備結構流場特性分析研究〉<span class="badge">優等</span>
+                    <span class="venue">HEFC 2024 第十九屆全國氫能與燃料電池學術研討會（S-020）｜口頭發表・一般論文組優等</span></li>
+            </ol>
+        </section>
+        <section class="card">
+            <h2>🏆 獲獎紀錄</h2>
+            <div class="experience-item">
+                <strong>一般論文組 優等</strong>
+                <span>2024｜第十九屆全國氫能與燃料電池學術研討會（HEFC 2024）</span>
+            </div>
+            <div class="experience-item">
+                <strong>系統整合應用組 第二名</strong>
+                <span>114 學年度智慧自動化工程系專題成果競賽</span>
+            </div>
+            <p class="meta" style="margin: 20px 0 0;">其他參賽：沃旭能源永續創新加速器競賽、第四屆 USR 學生成果分享競賽</p>
+        </section>
+        <section id="projects" class="card">
+            <h2>🛠️ 專案實作</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <strong>台電風力發電機 AR 維修輔助平台</strong>
+                    <p>依工程圖與剖視圖，用 SOLIDWORKS 重建機艙內部零組件並完成組立，轉成 FBX 由團隊導入 Unity／AR；也協助程式測試與環境建置。</p>
+                </div>
+                <div class="project">
+                    <strong>國科會 AI 即時手語辨識計畫</strong>
+                    <p>蒐集整理公開手語影片，用 Python、OpenCV、MediaPipe 撰寫即時影像程式，把姿態與雙手共 75 個關鍵點轉成辨識模型可用的座標資料。</p>
+                </div>
+                <div class="project">
+                    <strong>精密模具設計與加工</strong>
+                    <p>四人小組以 hyperMILL 做三次加工參數實驗，加工時間 982 → 305 秒、能耗 59 → 17 Wh、平均 Ra 降低 41%。我另外寫了 CNC 連線程式，即時讀取主軸負載、轉速、進給率與執行中的 G-code 行號。</p>
+                </div>
+                <div class="project">
+                    <strong>AEM-25 單電池水電解測試治具</strong>
+                    <p>自行設計 25 cm² 測試治具（Rev. B），含 9 張工程圖與 BOM。目前設計完成，尚未加工。</p>
+                </div>
+                <div class="project">
+                    <strong>USR 馬力埔動畫《馬力埔的古往今來》</strong>
+                    <p>以生成式 AI 介紹新社馬力埔的歷史與香菇產業。我負責分鏡、中英文 Prompt 與 Negative Prompt 設計，參加第四屆 USR 學生成果分享競賽。</p>
+                </div>
+                <div class="project site-list">
+                    <strong>網站作品</strong>
+                    <div class="experience-item">
+                        <a href="https://aem-electrolyzer-optimization-site.pages.dev/" target="_blank" rel="noopener">AEM 電解槽最佳化平台 ↗</a>
+                        <span>專題完整展示（React／TypeScript）</span>
+                    </div>
+                    <div class="experience-item">
+                        <a href="https://aem-mobile-demo.pages.dev/" target="_blank" rel="noopener">AEM 電解槽展場最佳化 ↗</a>
+                        <span>展場用互動展示版</span>
+                    </div>
+                    <div class="experience-item" style="margin-bottom: 0;">
+                        <a href="heat-lab/">熱流實驗室 ↗</a>
+                        <span>互動式熱流實驗</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="experience" class="card">
+            <h2>🌏 國際交流與實習</h2>
+            <div class="experience-item">
+                <strong>日本千葉大學 Global Study Program</strong>
+                <span>國際教養學部 特別聽講學生</span>
+                <p>和千葉大學、德國 HTW Dresden 學生混合分組，主題是汽車產業的挑戰與機會。參訪 ISUZU 藤澤工廠、Atlas Copco、TRUMPF、Bosch Japan、出光興產潤滑油研究所與千葉大學次世代移動動力源研究中心；期末以英文發表〈What drives innovation in the Japanese and German automotive industry?〉，我負責汽車產業過去的創新驅動因素。</p>
+            </div>
+            <div class="experience-item" style="margin: 25px 0 0;">
+                <strong>正裕科技工程股份有限公司｜機電工程實習</strong>
+                <span>2026.01 – 2026.02</span>
+                <p>參與廠辦大樓新建工程，判讀配電與照明施工圖，到現場查驗電力、弱電線架與消防管線，量測尺寸、高程與吊架間距並填寫查驗紀錄。</p>
+            </div>
+        </section>
         <section class="card">
             <div class="info-grid">
                 <div class="info-item">
-                    <h2>🔬 研究與計畫</h2>
+                    <h2>🤝 幹部與服務</h2>
                     <div class="experience-item">
-                        <strong>兼任教學助理</strong>
+                        <strong>班級幹部</strong>
+                        <span>班長、副班長（三學期）、畢委會班委代表、資訊股長</span>
                     </div>
                     <div class="experience-item">
-                        <strong>國科會計畫</strong>
+                        <strong>滑板社 器材幹部</strong>
+                        <span>114 學年度</span>
                     </div>
                     <div class="experience-item">
-                        <strong>風機環境協作</strong>
+                        <strong>教學助理</strong>
+                        <span>電腦輔助機械製圖、程式語言</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>系辦工讀</strong>
+                        <span>協助四技申請入學面試報到</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>志願服務</strong>
+                        <span>志工基礎教育訓練 6 小時、基本救命術 8 小時</span>
                     </div>
                 </div>
                 <div class="info-item">
-                    <h2>🏫 跨校選修</h2>
+                    <h2>📜 證照與培訓</h2>
                     <div class="experience-item">
-                        <strong>國立中正大學</strong>
-                        <span>綠色工具機</span>
+                        <strong>CSWP</strong>
+                        <span>Certified SOLIDWORKS Professional</span>
                     </div>
                     <div class="experience-item">
-                        <strong>國立中興大學</strong>
-                        <span>半導體 (台積電)</span>
+                        <strong>iPAS AI 應用規劃師</strong>
+                        <span>初級</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>電腦軟體應用</strong>
+                        <span>丙級技術士</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>Vestas 風機課程</strong>
+                        <span>Wind Turbine Introduction、Converter</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>TAIROA 工業機器人工作坊</strong>
+                        <span>14 小時，HIWIN 六軸機械手臂 I/O 配線與教導程式</span>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="card">
-            <h2>🏆 研討會與競賽</h2>
-            <div class="tag-container">
-                <span class="tag">沃旭能源永續創新加速器競賽</span>
-                <span class="tag">ILASS-ASIA</span>
-                <span class="tag">ACMT</span>
-                <span class="tag">CSME</span>
-                <span class="tag" style="background: var(--primary-green); color: #ffffff; border: none;">HEFC (佳作)</span>
-                <span class="tag">ISME</span>
-            </div>
-        </section>
-
         <section id="skills" class="card">
-            <h2>🛹 專業與特長</h2>
-            <div class="tag-container">
-                <span class="tag">人工智慧應用</span>
-                <span class="tag">程式開發 (C++/Python)</span>
-                <span class="tag">自動化系統整合</span>
-                <span class="tag">熱流分析</span>
-                <span class="tag">3D繪圖建模</span>
-                <span class="tag">Comsol模擬</span>
-                <span class="tag">Mastercam</span>
-                <span class="tag">PLC邏輯控制</span>
-                <span class="tag">攝影與影像剪輯</span>
-                <span class="tag">吉他彈唱</span>
-                <span class="tag">滑板技術</span>
+            <h2>🧰 專業技能</h2>
+            <div class="skill-row">
+                <h4>模擬分析</h4>
+                <div class="tag-container">
+                    <span class="tag">COMSOL Multiphysics</span>
+                    <span class="tag">CFD</span>
+                    <span class="tag">熱流分析</span>
+                    <span class="tag">反應曲面法</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>設計與製造</h4>
+                <div class="tag-container">
+                    <span class="tag">SOLIDWORKS</span>
+                    <span class="tag">Mastercam</span>
+                    <span class="tag">hyperMILL</span>
+                    <span class="tag">NX CAM</span>
+                    <span class="tag">CNC／G-code</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>程式與自動化</h4>
+                <div class="tag-container">
+                    <span class="tag">Python</span>
+                    <span class="tag">scikit-learn</span>
+                    <span class="tag">pymoo</span>
+                    <span class="tag">OpenCV／MediaPipe</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">PLC 邏輯控制</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>網站與 AI</h4>
+                <div class="tag-container">
+                    <span class="tag">React／TypeScript 網站</span>
+                    <span class="tag">生成式 AI 提示詞設計</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>語言</h4>
+                <div class="tag-container">
+                    <span class="tag">英文：研討會英文口頭發表</span>
+                    <span class="tag">日文：基礎日常會話</span>
+                </div>
             </div>
         </section>
-
         <section class="card">
-            <h2>✨ 個人特質</h2>
-            <div class="tag-container">
-                <span class="tag">積極主動</span>
-                <span class="tag">團隊協作</span>
-                <span class="tag">高執行力</span>
-                <span class="tag">樂於助人</span>
-                <span class="tag">危機處理</span>
-                <span class="tag">具責任感</span>
-                <span class="tag">善解人意</span>
+            <h2>✨ 個人特質與興趣</h2>
+            <div class="skill-row">
+                <h4>個人特質</h4>
+                <div class="tag-container">
+                    <span class="tag">積極主動</span>
+                    <span class="tag">團隊協作</span>
+                    <span class="tag">高執行力</span>
+                    <span class="tag">樂於助人</span>
+                    <span class="tag">危機處理</span>
+                    <span class="tag">具責任感</span>
+                    <span class="tag">善解人意</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>興趣</h4>
+                <div class="tag-container">
+                    <span class="tag">🎸 吉他彈唱</span>
+                    <span class="tag">🛹 滑板</span>
+                    <span class="tag">🏋️ 重量訓練</span>
+                    <span class="tag">📷 攝影與影像剪輯</span>
+                </div>
             </div>
         </section>
-
         <section id="contact" class="card" style="text-align: center;">
-            <h2>✉️ 聯絡資訊</h2>
+            <h2 style="justify-content: center;">✉️ 聯絡資訊</h2>
             <p style="margin-bottom: 25px;">期待與您的交流與合作！點擊下方資訊可直接與我聯繫。</p>
             <div>
                 <a href="tel:" class="contact-link phone">📞 </a>
                 <a href="mailto:novatech01xpq@gmail.com" class="contact-link email">✉️ novatech01xpq@gmail.com</a>
+                <a href="https://github.com/kungmengchien0814" class="contact-link email" target="_blank" rel="noopener">💻 github.com/kungmengchien0814</a>
             </div>
         </section>
     </div>
-
     <footer>
         <p>&copy; 2026 KUNG MENG-CHIEN. 致力於創造科技價值。</p>
     </footer>
-
     <button id="backToTop" class="back-to-top" title="回到頂部">↑</button>
-
     <script>
         // 1. 卡片捲動浮現動畫
         const observerOptions = { threshold: 0.12 };
@@ -563,27 +876,23 @@
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.card').forEach(card => {
             observer.observe(card);
         });
-
         window.onload = () => {
             const firstCard = document.querySelector('.card');
             if (firstCard) firstCard.classList.add('is-visible');
         };
-
         // 2. 深色模式切換 (Dark Mode Toggle)
         const themeToggleBtn = document.getElementById('themeToggle');
         const body = document.body;
-        
+
         // 檢查使用者的本地儲存紀錄
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             body.classList.add('dark-mode');
             themeToggleBtn.textContent = '☀️';
         }
-
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
@@ -594,10 +903,9 @@
                 themeToggleBtn.textContent = '🌙';
             }
         });
-
         // 3. 回到頂部功能 (Back to Top)
         const backToTopBtn = document.getElementById('backToTop');
-        
+
         window.addEventListener('scroll', () => {
             // 滑動超過 300px 時顯示按鈕
             if (window.scrollY > 300) {
@@ -606,7 +914,6 @@
                 backToTopBtn.classList.remove('show');
             }
         });
-
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,

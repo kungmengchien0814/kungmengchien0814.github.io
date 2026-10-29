@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meng-Chien Kung | Portfolio</title>
-    
+    <meta name="description" content="Meng-Chien Kung, Department of Intelligent Automation Engineering, National Chin-Yi University of Technology. Research on AEM electrolyzer flow-field simulation and optimization; 7 conference papers, including 2 English oral presentations.">
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* 變數設定 (保持與中文版完全一致) */
+        /* 定義亮色/深色模式的變數 */
         :root {
             --primary-green: #2d6a4f;
             --accent-green: #52b788;
@@ -24,9 +25,9 @@
             --tag-border: #dcfce7;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-
+        /* 深色模式變數 */
         body.dark-mode {
-            --primary-green: #52b788;  
+            --primary-green: #52b788;
             --accent-green: #74c69d;
             --bg-gray: #121212;
             --card-white: #1e1e1e;
@@ -39,291 +40,832 @@
             --tag-bg: #2d3748;
             --tag-border: #4a5568;
         }
-
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
         body {
             background-color: var(--bg-gray);
             color: var(--text-dark);
             font-family: 'Noto Sans TC', -apple-system, sans-serif;
-            margin: 0; padding: 0; line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
             transition: background-color 0.4s ease, color 0.4s ease;
         }
-
+        /* 頂部導覽列 */
         nav {
-            position: fixed; top: 0; width: 100%;
-            background: var(--nav-bg); backdrop-filter: blur(10px);
-            z-index: 1000; border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
         }
-
         .nav-container {
-            max-width: 1100px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px 25px;
         }
-
         .nav-logo {
-            font-weight: 700; color: var(--primary-green);
-            font-size: 1.2rem; text-decoration: none; letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 1px;
             transition: var(--transition);
         }
-
-        .nav-links { display: flex; align-items: center; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
         .nav-links a {
-            text-decoration: none; color: var(--text-muted);
-            margin-left: 25px; font-size: 0.9rem; font-weight: 500;
+            text-decoration: none;
+            color: var(--text-muted);
+            margin-left: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: var(--transition);
         }
-        .nav-links a:hover { color: var(--primary-green); }
-
-        /* 語言切換按鈕 */
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        /* 語言切換按鈕 (調整字體與大小，讓它更精緻) */
         .lang-switch {
             margin-left: 25px;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border: 1px solid var(--primary-green);
             border-radius: 20px;
-            color: var(--primary-green);
+            color: var(--primary-green) !important;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
-        .lang-switch:hover { background: var(--primary-green); color: #fff; }
-
+        .lang-switch:hover {
+            background: var(--primary-green);
+            color: #fff !important;
+        }
+        /* 深色模式切換按鈕 */
         .theme-toggle {
-            background: none; border: none; font-size: 1.2rem;
-            cursor: pointer; margin-left: 15px; transition: var(--transition); outline: none;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: var(--transition);
+            outline: none;
         }
-        .theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
-
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+        /* Hero Section */
         .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 0 20px; background: var(--hero-bg); transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 110px 20px 130px;
+            background: var(--hero-bg);
+            transition: var(--transition);
         }
-
         .profile-pic {
-            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
-            border: 5px solid var(--card-white); box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-bottom: 25px; transition: var(--transition);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--card-white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            transition: var(--transition);
         }
-        .profile-pic:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15); }
-
-        .hero-sub { color: var(--accent-green); font-weight: 700; letter-spacing: 5px; margin-bottom: 10px; font-size: 0.9rem; transition: var(--transition); }
-        .hero h1 { font-size: 3.5rem; margin: 0; color: var(--primary-green); letter-spacing: 2px; transition: var(--transition); }
-        .hero-desc { font-size: 1.2rem; color: var(--text-muted); margin-top: 15px; max-width: 600px; transition: var(--transition); }
-
-        .btn-group { margin-top: 30px; display: flex; gap: 15px; justify-content: center; }
-        .btn { padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: var(--transition); }
-        .btn-primary { background: var(--primary-green); color: #ffffff; border: 2px solid var(--primary-green); box-shadow: 0 4px 15px rgba(45, 106, 79, 0.2); }
-        .btn-primary:hover { background: var(--accent-green); border-color: var(--accent-green); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(82, 183, 136, 0.4); color: #ffffff; }
-
-        .main-content { max-width: 900px; margin: -80px auto 100px; padding: 0 20px; }
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15);
+        }
+        .hero-sub {
+            color: var(--accent-green);
+            font-weight: 700;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--primary-green);
+            letter-spacing: 2px;
+            transition: var(--transition);
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+            max-width: 720px;
+            transition: var(--transition);
+        }
+        /* 數據摘要 */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+            width: 100%;
+            max-width: 720px;
+        }
+        .stat {
+            background: var(--card-white);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 12px 10px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        .stat b {
+            display: block;
+            font-size: 1.4rem;
+            line-height: 1.3;
+            color: var(--primary-green);
+        }
+        .stat span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .btn-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: var(--primary-green);
+            color: #ffffff;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.2);
+        }
+        .btn-primary:hover {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(82, 183, 136, 0.4);
+            color: #ffffff;
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+        .btn-outline:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+        /* 卡片排版 */
+        .main-content {
+            max-width: 900px;
+            margin: -80px auto 100px;
+            padding: 0 20px;
+        }
         .card {
-            background: var(--card-white); border-radius: 30px; padding: 50px; margin-bottom: 40px;
-            box-shadow: var(--card-shadow); border: 1px solid var(--border-color);
-            opacity: 0; transform: translateY(40px); transition: var(--transition); scroll-margin-top: 110px; 
+            background: var(--card-white);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: var(--transition);
+            scroll-margin-top: 110px;
         }
-        .card.is-visible { opacity: 1; transform: translateY(0); }
-        
-        h2 { font-size: 1.6rem; color: var(--primary-green); margin-top: 0; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; transition: var(--transition); }
-        
-        .tag-container { display: flex; flex-wrap: wrap; gap: 12px; }
-        .tag { background: var(--tag-bg); color: var(--primary-green); padding: 8px 18px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--tag-border); transition: var(--transition); }
-        .tag:hover { background: var(--primary-green); color: #ffffff; border-color: var(--primary-green); }
-
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .experience-item { margin-bottom: 15px; }
-        .experience-item strong { display: block; color: var(--text-dark); font-size: 1.05rem; transition: var(--transition); }
-        .experience-item span { color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); }
-
-        .contact-link { display: inline-block; text-decoration: none; transition: var(--transition); }
-        .contact-link.phone { font-size: 1.6rem; font-weight: 700; color: var(--primary-green); margin: 0; }
-        .contact-link.phone:hover { color: var(--accent-green); transform: translateY(-2px); }
-        .contact-link.email { font-size: 1.1rem; color: var(--text-muted); margin-top: 5px; display: block; }
-        .contact-link.email:hover { color: var(--primary-green); transform: translateY(-2px); }
-
-        footer { text-align: center; padding-bottom: 60px; color: var(--text-muted); font-size: 0.85rem; transition: var(--transition); }
-
+        .card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h2 {
+            font-size: 1.6rem;
+            color: var(--primary-green);
+            margin-top: 0;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+        h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin: 35px 0 5px;
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+        h2 + h3 {
+            margin-top: 0;
+        }
+        .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0 0 12px;
+            transition: var(--transition);
+        }
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .tag {
+            background: var(--tag-bg);
+            color: var(--primary-green);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--tag-border);
+            transition: var(--transition);
+        }
+        .tag:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+            border-color: var(--primary-green);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .experience-item {
+            margin-bottom: 15px;
+        }
+        .experience-item strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+        .experience-item span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .experience-item p {
+            margin: 5px 0 0;
+        }
+        /* 研究時間軸 */
+        .timeline {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 6px;
+            border-left: 2px solid var(--tag-border);
+        }
+        .timeline li {
+            position: relative;
+            padding: 0 0 16px 24px;
+        }
+        .timeline li:last-child {
+            padding-bottom: 0;
+        }
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+        .timeline .when {
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-right: 8px;
+        }
+        /* 成果數據區塊 */
+        .highlight {
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            border-radius: 18px;
+            padding: 18px 24px;
+            margin: 20px 0 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 40px;
+            transition: var(--transition);
+        }
+        .highlight div {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .highlight b {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--primary-green);
+        }
+        /* 論文列表 */
+        .pub-list {
+            padding-left: 1.4em;
+            margin: 0;
+        }
+        .pub-list li {
+            margin-bottom: 16px;
+        }
+        .pub-list li:last-child {
+            margin-bottom: 0;
+        }
+        .pub-list .venue {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1.6;
+            padding: 1px 10px;
+            border-radius: 50px;
+            background: var(--primary-green);
+            color: #ffffff;
+            margin-left: 6px;
+            vertical-align: 2px;
+        }
+        /* 專案卡片 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .project {
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 22px 24px;
+            background: var(--bg-gray);
+            transition: var(--transition);
+        }
+        .project strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .project p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        /* 連結 */
+        .link-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .link-chip {
+            text-decoration: none;
+            color: var(--primary-green);
+            border: 1px solid var(--primary-green);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .link-chip:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+        }
+        .site-list .experience-item a {
+            display: block;
+            color: var(--primary-green);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .site-list .experience-item a:hover {
+            text-decoration: underline;
+        }
+        .skill-row {
+            margin-bottom: 20px;
+        }
+        .skill-row:last-child {
+            margin-bottom: 0;
+        }
+        .skill-row h4 {
+            margin: 0 0 10px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .contact-link {
+            display: inline-block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .contact-link.phone {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin: 0;
+        }
+        .contact-link.phone:hover {
+            color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+        .contact-link.email {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            display: block;
+        }
+        .contact-link.email:hover {
+            color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+        footer {
+            text-align: center;
+            padding-bottom: 60px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        /* 回到頂部按鈕 */
         .back-to-top {
-            position: fixed; bottom: 30px; right: 30px; background: var(--primary-green); color: #fff;
-            width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.5rem; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transform: translateY(20px);
-            transition: var(--transition); z-index: 999; display: flex; justify-content: center; align-items: center;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-green);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        .back-to-top:hover { background: var(--accent-green); transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--accent-green);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-desc span { display: block; }
+            .hero-desc .sep { display: none; }
             .info-grid { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
+            .hero-stats { grid-template-columns: 1fr 1fr; }
             .card { padding: 35px 25px; }
             .main-content { margin-top: 20px; }
             .profile-pic { width: 130px; height: 130px; }
-            .nav-links a { margin-left: 12px; font-size: 0.85rem; }
-            .lang-switch { margin-left: 12px; padding: 4px 8px; font-size: 0.75rem; }
-            .theme-toggle { margin-left: 10px; }
+
+            /* 手機版導覽列調整 */
+            .nav-container { padding: 12px 16px; }
+            .nav-logo { display: none; }
+            .nav-links { width: 100%; justify-content: space-between; }
+            .nav-links a { margin-left: 0; font-size: 0.85rem; }
+            .lang-switch { margin-left: 0; padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
+            .nav-optional { display: none; }
+            .theme-toggle { margin-left: 0; }
+
             .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
             <a href="#" class="nav-logo">KUNG MENG-CHIEN</a>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#experience-research">Experience</a>
-                <a href="#skills">Skills</a>
+                <a href="#research">Research</a>
+                <a class="nav-optional" href="#experience">Experience</a>
+                <a class="nav-optional" href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
-                <a href="../index.html" class="lang-switch">🇹🇼 中文</a>
-                <button id="themeToggle" class="theme-toggle" title="Toggle Theme">🌙</button>
+
+                <a href="../" class="lang-switch">🇹🇼 中文</a>
+                <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
             </div>
         </div>
     </nav>
-
     <section class="hero">
         <img src="../profile.jpg" alt="Meng-Chien Kung Profile" class="profile-pic">
         <span class="hero-sub">RESUME PORTFOLIO</span>
         <h1>Meng-Chien Kung</h1>
-        <p class="hero-desc">Intelligent Automation Engineering | Exploring the infinite possibilities of technology.</p>
-        
+        <p class="hero-desc"><span>Intelligent Automation Engineering</span><span class="sep"> | </span><span>AEM Electrolyzer Flow-Field Simulation &amp; Optimization</span></p>
+        <div class="hero-stats">
+            <div class="stat"><b>7</b><span>Conference papers</span></div>
+            <div class="stat"><b>2</b><span>English oral talks</span></div>
+            <div class="stat"><b>Excellent</b><span>HEFC 2024 paper award</span></div>
+        </div>
+
         <div class="btn-group">
             <a href="#about" class="btn btn-primary">Discover More</a>
+            <a href="#research" class="btn btn-outline">Research</a>
         </div>
     </section>
-
     <div class="main-content">
         <section id="about" class="card">
             <h2>👤 About Me</h2>
-            <p>I am Meng-Chien Kung, currently studying at the **Department of Intelligent Automation Engineering, National Chin-Yi University of Technology**. I am deeply passionate about AI applications, software development, and automation system integration. I excel at turning theory into practice and find great fulfillment in solving complex technical challenges.</p>
-            <p>Beyond technology, I actively participate in community and class affairs. Serving as a club executive and class representative has honed my leadership, communication, and crisis management skills. I firmly believe that combining cross-disciplinary expertise with a proactive attitude is essential for a modern engineer.</p>
+            <p>I am Meng-Chien Kung, a senior in the <strong>Department of Intelligent Automation Engineering, National Chin-Yi University of Technology</strong>, graduating in June 2027. Since 2024 I have worked in Prof. Peng-Jen Chen's research group on the flow-field and structural design of anion-exchange-membrane (AEM) water electrolyzers, with technical and equipment support from ITRI's Green Energy and Environment Research Laboratories. Over two years I have published seven conference papers and presented every one of them myself, two in English at international conferences.</p>
+            <p>Outside the lab I have worked with CNC/CAM machining, industrial robot arms and semiconductor processes, written computer-vision and CNC connectivity programs, and turned my capstone project into an interactive website. In graduate school I want to move beyond my current single-phase liquid-flow models and study gas–liquid two-phase flow in electrolyzer channels.</p>
         </section>
-
         <section class="card">
-            <div class="info-grid">
-                <div class="info-item">
-                    <h2>🎓 Education</h2>
-                    <h3 style="margin:0; font-size:1.2rem;">National Chin-Yi University of Technology</h3>
-                    <p style="margin:5px 0;">B.S. in Intelligent Automation Engineering</p>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">Student ID: </p>
-                </div>
-                <div id="experience" class="info-item">
-                    <h2>🏢 Leadership & Activities</h2>
-                    <div class="experience-item">
-                        <strong>Skateboarding Club Executive</strong>
-                        <span>Responsible for club administration, event planning, and promotion.</span>
-                    </div>
-                    <div class="experience-item">
-                        <strong>Class Representative</strong>
-                        <span>Coordinated class affairs and served as a communication bridge between students and faculty.</span>
-                    </div>
-                    <div class="experience-item">
-                        <strong>Vice Class Representative</strong>
-                        <span>Assisted the Class Rep with administrative tasks to ensure smooth teamwork operations.</span>
-                    </div>
-                </div>
+            <h2>🎓 Education</h2>
+            <h3>National Chin-Yi University of Technology — Intelligent Automation Engineering</h3>
+            <p class="meta">Sep 2023 – Jun 2027 (expected)</p>
+            <p>Key courses: Thermodynamics, Fluid Mechanics, Manufacturing Processes, Engineering Mathematics, Materials Science and Engineering, Numerical Analysis</p>
+            <h3>Cross-University Courses</h3>
+            <div class="experience-item">
+                <strong>National Chung Cheng University | Green Machine Tool Practical Applications</strong>
+                <span>Summer 2024 · 3 credits</span>
+                <p>Planned tool paths and ran machining simulations in NX CAM and Mastercam, then machined a physical part on a CNC machining center.</p>
             </div>
-        </section>
-
-        <section id="experience-research" class="card">
-            <h2>💼 Internship</h2>
             <div class="experience-item" style="margin-bottom: 0;">
-                <strong style="font-size: 1.2rem; color: var(--primary-green); margin-bottom: 5px;">Cheng Yu Technology Engineering Co., Ltd. | Electromechanical Engineer</strong>
-                <p style="margin: 10px 0 5px 0; color: var(--text-dark);"><strong>Responsibilities:</strong> Design, development, installation, testing, and maintenance of electromechanical systems.</p>
-                <p style="margin: 0; color: var(--text-dark);"><strong>Scope of Work:</strong> Covered power, HVAC (Heating, Ventilation, and Air Conditioning), plumbing, and fire protection systems.</p>
+                <strong>National Chung Hsing University | Semiconductor Manufacturing Technology; Physics of Semiconductor Devices</strong>
+                <span>Summer 2025</span>
+                <p>Thin-film deposition, ion implantation, etching and CMP, plus device physics such as p-n junctions and MOSFETs.</p>
             </div>
         </section>
+        <section id="research" class="card">
+            <h2>🔬 Research</h2>
+            <h3>AEM Electrolyzer Flow-Field and Structural Optimization</h3>
+            <p class="meta">2024 – present | Advisor: Prof. Peng-Jen Chen | Support: ITRI Green Energy and Environment Research Laboratories</p>
+            <p>I build 3D COMSOL flow-field models of AEM electrolyzers. The work started with single-parameter comparisons and has since added experimental validation, parameter optimization and multiphysics coupling.</p>
+            <ul class="timeline">
+                <li><span class="when">2024</span>HEFC 2024: Compared how the nickel-mesh layer and inlet/outlet diffusers affect pressure drop and flow uniformity; Excellent Paper Award (General Paper category).</li>
+                <li><span class="when">2024</span>ACMT 2024: Ran a mesh-independence study and compared simulated pressure drop with ITRI experimental data; mean error about 0.006 bar at 4 million elements.</li>
+                <li><span class="when">2024–25</span>CSME 2024 / ISME 2025: Optimized inlet diffuser angle, inlet flow rate and nickel-mesh thickness with response surface methodology and Newton's gradient method; the performance index (mean velocity / pressure drop) came out about 20% higher than the current product parameters.</li>
+                <li><span class="when">2025</span>HEFC 2025: Single-cell model coupling flow, conjugate heat transfer and OH⁻ ion transport; main-channel velocity uniformity about 93% at an inlet velocity of 0.1 m/s.</li>
+                <li><span class="when">2025</span>ILASS-Asia 2025: Joint flow-field and thermal-management design comparing channel aspect ratio, inlet diffusion, local ribs and the nickel mesh; first author, English oral presentation.</li>
+                <li><span class="when">2026</span>ACRA 2026: Adding an outlet diffuser lowered pressure drop by about 34% against the baseline design; first author, English oral presentation; an output of NSTC project 114-2637-E-167-015.</li>
+            </ul>
 
+            <h3>Electrolyzer Geometry Optimization Using Machine Learning and Genetic Algorithms<span class="badge">2nd Place</span></h3>
+            <p class="meta">Junior-year capstone | Team of 3, team lead | 2nd Place, System Integration Applications category, 2025–26 Department Capstone Competition</p>
+            <p>We built a simplified five-layer 3D COMSOL model by coupling laminar flow, H₂ species transport and current distribution in stages, trained an MLP surrogate model on 200 simulation samples, and used a genetic algorithm to search channel parameters within machinable limits. I handled modeling and simulation, experiments and measurements, the project website and the Windows executable, and helped develop the Python, machine-learning and genetic-algorithm code.</p>
+            <div class="highlight">
+                <div><b>125.3 → 80.6 Pa</b>Pressure drop (−35.6%)</div>
+                <div><b>0.672 → 0.839</b>Flow uniformity (+24.8%)</div>
+            </div>
+            <p class="meta">Model-based results; not yet validated experimentally.</p>
+            <div class="link-list">
+                <a class="link-chip" href="https://aem-electrolyzer-optimization-site.pages.dev/" target="_blank" rel="noopener">Project website ↗</a>
+            </div>
+        </section>
+        <section id="publications" class="card">
+            <h2>📄 Conference Papers</h2>
+            <p class="meta">7 papers (3 international, 2 English oral presentations), all presented by me. * Corresponding author. Titles of Chinese-language papers are translated.</p>
+            <ol class="pub-list">
+                <li><strong>Meng-Chien Kung</strong>, Peng-Jen Chen*, “Flow-Field Optimization of an Anion-Exchange-Membrane Water Electrolyzer Cell”
+                    <span class="venue">12th Asian Conference on Refrigeration and Air-Conditioning (ACRA 2026), Paper ACRA2026-031 | International · first author · English oral</span></li>
+                <li><strong>Meng-Chien Kung</strong>, Peng-Jen Chen*, “Flow-Field and Thermal Characteristics of Single-Cell AEM Electrolyzer”
+                    <span class="venue">ILASS-Asia 2025, 24th Annual Conference on Liquid Atomization and Spray Systems–Asia, National Cheng Kung University | International · first author · English oral</span></li>
+                <li>Peng-Jen Chen, <strong>Meng-Chien Kung</strong>*, “Flow-Channel Design and Heat-Transfer Numerical Analysis of an AEM Electrolyzer” (in Chinese)
+                    <span class="venue">HEFC 2025 International Hydrogen Energy and Fuel Cell Conference, PH-100 | International · oral</span></li>
+                <li><strong>Meng-Chien Kung</strong>, “Structural Parameter Optimization of an AEM Hydrogen Electrolyzer” (in Chinese)
+                    <span class="venue">10th ISME National Conference (ISME 2025), Paper 150 | Oral</span></li>
+                <li>Peng-Jen Chen, <strong>Meng-Chien Kung</strong>*, “Structural Parameter Optimization of an AEM Hydrogen Electrolyzer” (in Chinese)
+                    <span class="venue">41st National Conference of the Chinese Society of Mechanical Engineers (CSME 2024), E17-005 | Oral</span></li>
+                <li>Peng-Jen Chen, <strong>Meng-Chien Kung</strong>*, et al., “Numerical Simulation of Near-Membrane Flow Characteristics in an Electrolyzer” (in Chinese)
+                    <span class="venue">2nd Annual Meeting of the Association for Computational Mechanics Taiwan (ACMT 2024) | Mini-forum oral</span></li>
+                <li>Peng-Jen Chen, <strong>Meng-Chien Kung</strong>*, “Structural Flow-Field Analysis of Electrolytic Hydrogen Equipment” (in Chinese)<span class="badge">Excellent Paper</span>
+                    <span class="venue">19th National Hydrogen Energy and Fuel Cell Conference (HEFC 2024), S-020 | Oral · Excellent Paper Award, General Paper category</span></li>
+            </ol>
+        </section>
+        <section class="card">
+            <h2>🏆 Awards</h2>
+            <div class="experience-item">
+                <strong>Excellent Paper Award, General Paper category</strong>
+                <span>2024 | 19th National Hydrogen Energy and Fuel Cell Conference (HEFC 2024)</span>
+            </div>
+            <div class="experience-item">
+                <strong>2nd Place, System Integration Applications category</strong>
+                <span>2025–26 Capstone Competition, Department of Intelligent Automation Engineering</span>
+            </div>
+            <p class="meta" style="margin: 20px 0 0;">Also competed in: Ørsted Sustainable Innovation Accelerator; 4th USR Student Showcase Competition</p>
+        </section>
+        <section id="projects" class="card">
+            <h2>🛠️ Projects</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <strong>Taipower Wind Turbine AR Maintenance Platform</strong>
+                    <p>Rebuilt the nacelle's internal components in SOLIDWORKS from engineering and section drawings and assembled them, then exported FBX files for the team to bring into Unity/AR. Also helped with program testing and environment setup.</p>
+                </div>
+                <div class="project">
+                    <strong>NSTC AI Real-Time Sign-Language Recognition</strong>
+                    <p>Collected and organized public sign-language videos, and wrote real-time Python/OpenCV/MediaPipe code that turns 75 pose and hand keypoints into coordinate data for the recognition model.</p>
+                </div>
+                <div class="project">
+                    <strong>Precision Mold Design and Machining</strong>
+                    <p>In a team of four, ran three hyperMILL machining-parameter trials: machining time 982 → 305 s, energy 59 → 17 Wh, mean Ra down 41%. I also wrote a CNC connectivity program that reads spindle load, speed, feed rate and the active G-code line in real time.</p>
+                </div>
+                <div class="project">
+                    <strong>AEM-25 Single-Cell Electrolysis Test Fixture</strong>
+                    <p>Designed a 25 cm² test fixture (Rev. B) with nine engineering drawings and a BOM. Design complete; not yet machined.</p>
+                </div>
+                <div class="project">
+                    <strong>USR Animation: Malipu, Past and Present</strong>
+                    <p>A generative-AI animation on the history and shiitake industry of Malipu in Xinshe, Taichung. I handled storyboarding and Chinese/English prompt and negative-prompt design; entered in the 4th USR Student Showcase Competition.</p>
+                </div>
+                <div class="project site-list">
+                    <strong>Websites</strong>
+                    <div class="experience-item">
+                        <a href="https://aem-electrolyzer-optimization-site.pages.dev/" target="_blank" rel="noopener">AEM Electrolyzer Optimization Platform ↗</a>
+                        <span>Full capstone showcase (React/TypeScript)</span>
+                    </div>
+                    <div class="experience-item">
+                        <a href="https://aem-mobile-demo.pages.dev/" target="_blank" rel="noopener">AEM Electrolyzer Exhibition Demo ↗</a>
+                        <span>Interactive version for exhibitions</span>
+                    </div>
+                    <div class="experience-item" style="margin-bottom: 0;">
+                        <a href="../heat-lab/">Heat Lab ↗</a>
+                        <span>Interactive thermal-fluid experiments</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="experience" class="card">
+            <h2>🌏 International Exchange &amp; Internship</h2>
+            <div class="experience-item">
+                <strong>Chiba University Global Study Program, Japan</strong>
+                <span>Special auditing student, College of Liberal Arts and Sciences</span>
+                <p>Worked in mixed teams with students from Chiba University and HTW Dresden (Germany) on the challenges and opportunities facing the automotive industry. Visited ISUZU's Fujisawa plant, Atlas Copco, TRUMPF, Bosch Japan, Idemitsu's lubricants research laboratory and Chiba University's next-generation mobility power research center. Our team gave its final presentation in English, “What drives innovation in the Japanese and German automotive industry?”; I covered the drivers behind past innovations.</p>
+            </div>
+            <div class="experience-item" style="margin: 25px 0 0;">
+                <strong>Cheng Yu Technology Engineering Co., Ltd. | M&amp;E Engineering Intern</strong>
+                <span>Jan – Feb 2026</span>
+                <p>Worked on a new office and factory building: read power and lighting construction drawings, inspected power and low-voltage cable trays and fire-protection piping on site, measured dimensions, elevations and hanger spacing, and filled in inspection records.</p>
+            </div>
+        </section>
         <section class="card">
             <div class="info-grid">
                 <div class="info-item">
-                    <h2>🔬 Research & Projects</h2>
+                    <h2>🤝 Leadership &amp; Service</h2>
+                    <div class="experience-item">
+                        <strong>Class Officer</strong>
+                        <span>Class leader, vice class leader (three semesters), graduation committee class representative, IT officer</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>Skateboarding Club Equipment Officer</strong>
+                        <span>2025–26</span>
+                    </div>
                     <div class="experience-item">
                         <strong>Teaching Assistant</strong>
+                        <span>Computer-Aided Mechanical Drawing; Programming Languages</span>
                     </div>
                     <div class="experience-item">
-                        <strong>NSTC Project</strong>
-                        <span>(National Science and Technology Council)</span>
+                        <strong>Department Office Assistant</strong>
+                        <span>Helped with check-in for undergraduate admission interviews</span>
                     </div>
                     <div class="experience-item">
-                        <strong>Wind Turbine Environmental Collaboration</strong>
+                        <strong>Volunteer Service</strong>
+                        <span>Volunteer basic training (6 h), basic life support (8 h)</span>
                     </div>
                 </div>
                 <div class="info-item">
-                    <h2>🏫 Cross-Campus Electives</h2>
+                    <h2>📜 Certifications &amp; Training</h2>
                     <div class="experience-item">
-                        <strong>National Chung Cheng University</strong>
-                        <span>Green Machine Tools</span>
+                        <strong>CSWP</strong>
+                        <span>Certified SOLIDWORKS Professional</span>
                     </div>
                     <div class="experience-item">
-                        <strong>National Chung Hsing University</strong>
-                        <span>Semiconductors (TSMC Program)</span>
+                        <strong>iPAS AI Application Planner</strong>
+                        <span>Entry level</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>Computer Software Application</strong>
+                        <span>Level C Technician Certificate</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>Vestas Wind Turbine Courses</strong>
+                        <span>Wind Turbine Introduction; Converter</span>
+                    </div>
+                    <div class="experience-item">
+                        <strong>TAIROA Industrial Robot Workshop</strong>
+                        <span>14 hours; HIWIN six-axis robot arm I/O wiring and teach programming</span>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="card">
-            <h2>🏆 Conferences & Competitions</h2>
-            <div class="tag-container">
-                <span class="tag">Ørsted Sustainable Innovation Accelerator</span>
-                <span class="tag">ILASS-ASIA</span>
-                <span class="tag">ACMT</span>
-                <span class="tag">CSME</span>
-                <span class="tag" style="background: var(--primary-green); color: #ffffff; border: none;">HEFC (Honorable Mention)</span>
-                <span class="tag">ISME</span>
-            </div>
-        </section>
-
         <section id="skills" class="card">
-            <h2>🛹 Professional Skills</h2>
-            <div class="tag-container">
-                <span class="tag">AI Applications</span>
-                <span class="tag">Programming (C++/Python)</span>
-                <span class="tag">Automation Integration</span>
-                <span class="tag">Thermal Fluid Analysis</span>
-                <span class="tag">3D Modeling</span>
-                <span class="tag">COMSOL Multiphysics</span>
-                <span class="tag">Mastercam</span>
-                <span class="tag">PLC Logic Control</span>
-                <span class="tag">Photography & Video Editing</span>
-                <span class="tag">Acoustic Guitar</span>
-                <span class="tag">Skateboarding</span>
+            <h2>🧰 Skills</h2>
+            <div class="skill-row">
+                <h4>Simulation &amp; Analysis</h4>
+                <div class="tag-container">
+                    <span class="tag">COMSOL Multiphysics</span>
+                    <span class="tag">CFD</span>
+                    <span class="tag">Thermal-Fluid Analysis</span>
+                    <span class="tag">Response Surface Methodology</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>Design &amp; Manufacturing</h4>
+                <div class="tag-container">
+                    <span class="tag">SOLIDWORKS</span>
+                    <span class="tag">Mastercam</span>
+                    <span class="tag">hyperMILL</span>
+                    <span class="tag">NX CAM</span>
+                    <span class="tag">CNC / G-code</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>Programming &amp; Automation</h4>
+                <div class="tag-container">
+                    <span class="tag">Python</span>
+                    <span class="tag">scikit-learn</span>
+                    <span class="tag">pymoo</span>
+                    <span class="tag">OpenCV / MediaPipe</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">PLC Logic Control</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>Web &amp; AI</h4>
+                <div class="tag-container">
+                    <span class="tag">React / TypeScript Websites</span>
+                    <span class="tag">Generative AI Prompt Design</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>Languages</h4>
+                <div class="tag-container">
+                    <span class="tag">English: conference oral presentations</span>
+                    <span class="tag">Japanese: basic conversation</span>
+                </div>
             </div>
         </section>
-
         <section class="card">
-            <h2>✨ Personal Traits</h2>
-            <div class="tag-container">
-                <span class="tag">Proactive</span>
-                <span class="tag">Team Collaboration</span>
-                <span class="tag">High Execution Ability</span>
-                <span class="tag">Helpful</span>
-                <span class="tag">Crisis Management</span>
-                <span class="tag">Strong Sense of Responsibility</span>
-                <span class="tag">Empathetic</span>
+            <h2>✨ Personal Traits &amp; Interests</h2>
+            <div class="skill-row">
+                <h4>Personal Traits</h4>
+                <div class="tag-container">
+                    <span class="tag">Proactive</span>
+                    <span class="tag">Team Collaboration</span>
+                    <span class="tag">High Execution Ability</span>
+                    <span class="tag">Helpful</span>
+                    <span class="tag">Crisis Management</span>
+                    <span class="tag">Strong Sense of Responsibility</span>
+                    <span class="tag">Empathetic</span>
+                </div>
+            </div>
+            <div class="skill-row">
+                <h4>Interests</h4>
+                <div class="tag-container">
+                    <span class="tag">🎸 Guitar &amp; Singing</span>
+                    <span class="tag">🛹 Skateboarding</span>
+                    <span class="tag">🏋️ Weight Training</span>
+                    <span class="tag">📷 Photography &amp; Video Editing</span>
+                </div>
             </div>
         </section>
-
         <section id="contact" class="card" style="text-align: center;">
-            <h2>✉️ Contact Info</h2>
+            <h2 style="justify-content: center;">✉️ Contact Info</h2>
             <p style="margin-bottom: 25px;">Looking forward to connecting and collaborating with you!</p>
             <div>
                 <a href="tel:" class="contact-link phone">📞 </a>
                 <a href="mailto:novatech01xpq@gmail.com" class="contact-link email">✉️ novatech01xpq@gmail.com</a>
+                <a href="https://github.com/kungmengchien0814" class="contact-link email" target="_blank" rel="noopener">💻 github.com/kungmengchien0814</a>
             </div>
         </section>
     </div>
-
     <footer>
         <p>&copy; 2026 KUNG MENG-CHIEN. Dedicated to creating technological value.</p>
     </footer>
-
     <button id="backToTop" class="back-to-top" title="Back to Top">↑</button>
-
     <script>
         const observerOptions = { threshold: 0.12 };
         const observer = new IntersectionObserver((entries) => {
@@ -333,25 +875,21 @@
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.card').forEach(card => {
             observer.observe(card);
         });
-
         window.onload = () => {
             const firstCard = document.querySelector('.card');
             if (firstCard) firstCard.classList.add('is-visible');
         };
-
         const themeToggleBtn = document.getElementById('themeToggle');
         const body = document.body;
-        
+
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             body.classList.add('dark-mode');
             themeToggleBtn.textContent = '☀️';
         }
-
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
@@ -362,7 +900,6 @@
                 themeToggleBtn.textContent = '🌙';
             }
         });
-
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -371,7 +908,6 @@
                 backToTopBtn.classList.remove('show');
             }
         });
-
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
