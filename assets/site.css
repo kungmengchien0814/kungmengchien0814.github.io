@@ -70,8 +70,8 @@ img { max-width: 100%; }
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in srgb, var(--paper) 90%, transparent);
-    backdrop-filter: blur(10px);
+    /* solid on purpose: a blurred, see-through bar has to be re-blurred every frame while the page scrolls */
+    background: var(--paper);
     border-bottom: 1px solid var(--rule);
 }
 .topbar .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
