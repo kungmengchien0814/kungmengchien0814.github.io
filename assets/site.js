@@ -364,7 +364,10 @@
             W = r.width; H = r.height;
             cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            cx = W / 2; cy = H / 2; R = Math.min(W * 0.41, H * 0.45);
+            // leave a strip under the cell for its caption and room beside it for the inlet and outlet labels
+            const label = cv.parentElement.querySelector(".lbl.in");
+            const labelW = label ? label.offsetWidth : 40;
+            cx = W / 2; cy = (H - 22) / 2; R = Math.min(W * 0.41, cy - 6, cx - labelW - 14);
             buildMesh();
             parts.length = 0;
             const n = W < 500 ? 140 : 220;
