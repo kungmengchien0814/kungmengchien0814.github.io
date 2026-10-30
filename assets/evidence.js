@@ -143,9 +143,9 @@ window.EV = {
             zh: ["自行設計的 25 cm²（50 × 50 mm）AEM 水電解單電池測試治具，在 1 M KOH、60 °C 下測一片 MEA，共 13 個零件群組。PTL 的壓縮量由墊片決定，電流從流道板銑出的極耳導出，一片 PEEK 把 KOH 和鋁端板隔開。", "實習之後，我設計治具與流道時會多考慮加工、組裝與現場量測的可行性。"],
             en: ["A 25 cm² (50 × 50 mm) single-cell test fixture for AEM water electrolysis that tests one MEA in 1 M KOH at 60 °C, with 13 part groups. Gaskets set the PTL compression, current leaves through tabs machined into the flow plates, and a PEEK sheet keeps KOH away from the aluminium end plates.", "Since my internship I design fixtures and channels with machining, assembly and on-site measurement in mind."]
         },
-        links: [{ href: "https://kungmengchien.uk/aem-25/", label: { zh: "完整 3D 爆炸圖網站", en: "Full 3D exploded-view site" } }],
+        links: [{ href: { zh: "https://kungmengchien.uk/aem-25/?lang=zh", en: "https://kungmengchien.uk/aem-25/?lang=en" }, label: { zh: "完整 3D 爆炸圖網站", en: "Full 3D exploded-view site" } }],
         tryIt: {
-            src: "https://kungmengchien.uk/aem-25/#explore",
+            src: { zh: "https://kungmengchien.uk/aem-25/?lang=zh#explore", en: "https://kungmengchien.uk/aem-25/?lang=en#explore" },
             title: { zh: "AEM-25 互動爆炸圖", en: "AEM-25 interactive exploded view" },
             text: { zh: "3D 互動爆炸圖：拖曳旋轉、拉桿拆開，點任何零件可以看材料、尺寸和設計理由。", en: "An interactive 3D exploded view: drag to rotate, slide to take it apart, and select any part for its material, size and design rationale." }
         },

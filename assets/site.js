@@ -55,6 +55,7 @@
         return n;
     };
     const src = (name, thumb) => `${base}ev/${thumb ? "t/" : ""}${name}.webp`;
+    const pick = (v) => (v && typeof v === "object" ? v[lang] : v); // a URL can differ per language
 
     /* ---------- theme ---------- */
     const themeBtn = document.querySelector("[data-theme-toggle]");
@@ -117,14 +118,14 @@
         if (ev.cite) bodyEl.append(el("p", { class: "cite", text: ev.cite }));
         if (ev.body) bodyEl.append(el("div", { class: "summary" }, ...ev.body[lang].map((t) => el("p", { text: t }))));
         if (ev.links) bodyEl.append(el("p", { class: "links" }, ...ev.links.map((l) =>
-            el("a", { href: l.href, target: "_blank", rel: "noopener", text: l.label[lang] }))));
+            el("a", { href: pick(l.href), target: "_blank", rel: "noopener", text: l.label[lang] }))));
         if (ev.tryIt) {
             const t = ev.tryIt;
             const run = el("button", { class: "btn primary", type: "button", text: T.tryIt });
             const actions = el("div", { class: "try-actions" }, run,
-                el("a", { class: "btn", href: t.src, target: "_blank", rel: "noopener", text: T.openNew }));
+                el("a", { class: "btn", href: pick(t.src), target: "_blank", rel: "noopener", text: T.openNew }));
             run.addEventListener("click", () => {
-                const frame = el("iframe", { src: t.src, title: t.title[lang] });
+                const frame = el("iframe", { src: pick(t.src), title: t.title[lang] });
                 run.replaceWith(frame);
                 actions.classList.add("running");
             });
