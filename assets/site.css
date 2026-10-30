@@ -142,8 +142,9 @@ html[lang="en"] .hero h1 { letter-spacing: 0; font-family: var(--font-num); font
 .cell-stage { position: relative; aspect-ratio: 6 / 5; }
 .cell-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .cell-stage .lbl { position: absolute; font-size: 0.8rem; color: var(--ink-3); white-space: nowrap; pointer-events: none; }
-.cell-stage .lbl.in { left: 0; top: calc(50% + 14px); }
-.cell-stage .lbl.out { right: 0; top: calc(50% + 14px); text-align: right; }
+.cell-stage .lbl.in { left: 0; top: calc(50% + 3px); }
+.cell-stage .lbl.out { right: 0; top: calc(50% + 3px); text-align: right; }
+.cell-stage .lbl .short { display: none; }
 .cell-stage .lbl.dia { left: 50%; bottom: 0; transform: translateX(-50%); }
 .cell-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px; margin-top: 14px; }
 .seg { display: inline-flex; padding: 3px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
@@ -160,7 +161,7 @@ html[lang="en"] .hero h1 { letter-spacing: 0; font-family: var(--font-num); font
 .readout { display: flex; gap: 24px; font-size: 0.85rem; color: var(--ink-3); }
 .readout b { display: block; font: 600 1.25rem/1.2 var(--font-num); color: var(--ink); }
 .scale { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; font-size: 0.8rem; color: var(--ink-3); white-space: nowrap; }
-.scale i { flex: 0 0 96px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #2B3A86, #2C7BB6, #2BB3B1, #9BD3A0, #F2B134); }
+.scale i { flex: none; width: 96px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #2B3A86, #2C7BB6, #2BB3B1, #9BD3A0, #F2B134); }
 .cell figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--ink-3); line-height: 1.6; }
 .cell figcaption > span:last-child { flex: 1 1 18em; }
 
@@ -356,6 +357,8 @@ footer { padding: 32px 0 48px; border-top: 1px solid var(--rule); color: var(--i
     .hero { padding: 40px 0 48px; }
     .who { gap: 18px; }
     .cell-stage { aspect-ratio: 6 / 5; }
+    .cell-stage .lbl .full { display: none; }
+    .cell-stage .lbl .short { display: inline; }
     .portrait { width: 92px; height: 92px; border-radius: 10px; }
     .lead { font-size: 1.15rem; }
     .facts li { grid-template-columns: 5.4rem minmax(0, 1fr); }
